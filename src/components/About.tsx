@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
 import { Card } from '@/components/ui/card';
+import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { Code2, Palette, Zap } from 'lucide-react';
+import profilePlaceholder from '@/assets/profile-placeholder.jpg';
 
 const skills = [
   {
@@ -40,6 +42,41 @@ export const About = () => {
             of what's possible on the web. With 5+ years of experience, I specialize in building 
             modern, performant applications that users love.
           </p>
+        </motion.div>
+        
+        {/* Profile Picture Section */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          viewport={{ once: true }}
+          className="flex justify-center mb-16"
+        >
+          <motion.div
+            whileHover={{ y: -10, rotateY: 15, scale: 1.05 }}
+            transition={{ duration: 0.3 }}
+            className="perspective-1000"
+          >
+            <Card className="glass-effect p-8 w-fit hover:shadow-deep transition-all duration-500 transform-3d">
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-r from-neon-cyan/20 to-neon-purple/20 rounded-full blur-xl"></div>
+                <Avatar className="w-48 h-48 mx-auto relative border-2 border-primary/30 shadow-2xl">
+                  <AvatarImage 
+                    src={profilePlaceholder} 
+                    alt="Alex Chen - Full Stack Developer"
+                    className="object-cover"
+                  />
+                  <AvatarFallback className="text-4xl font-bold bg-gradient-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent">
+                    AC
+                  </AvatarFallback>
+                </Avatar>
+              </div>
+              <div className="text-center mt-6">
+                <h3 className="text-2xl font-bold neon-text">Alex Chen</h3>
+                <p className="text-accent font-medium">Full Stack Developer</p>
+              </div>
+            </Card>
+          </motion.div>
         </motion.div>
         
         <div className="grid md:grid-cols-3 gap-8">
