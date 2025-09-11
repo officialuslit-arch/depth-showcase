@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Hero } from '@/components/Hero';
 import { About } from '@/components/About';
 import { Projects } from '@/components/Projects';
@@ -5,8 +6,19 @@ import { Skills } from '@/components/Skills';
 import { Contact } from '@/components/Contact';
 import { Navigation } from '@/components/Navigation';
 import { ParticleBackground } from '@/components/ParticleBackground';
+import { LoadingScreen } from '@/components/LoadingScreen';
 
 const Index = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  const handleLoadingComplete = () => {
+    setIsLoading(false);
+  };
+
+  if (isLoading) {
+    return <LoadingScreen onComplete={handleLoadingComplete} />;
+  }
+
   return (
     <div className="relative min-h-screen bg-background text-foreground">
       <ParticleBackground />
