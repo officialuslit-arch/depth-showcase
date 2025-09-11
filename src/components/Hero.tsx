@@ -2,7 +2,9 @@ import { motion } from 'framer-motion';
 import { Canvas } from '@react-three/fiber';
 import { Float, Text3D } from '@react-three/drei';
 import { Button } from '@/components/ui/button';
+import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import heroBackground from '@/assets/hero-background.jpg';
+import profilePlaceholder from '@/assets/profile-placeholder.jpg';
 
 const FloatingCube = () => {
   return (
@@ -62,6 +64,32 @@ export const Hero = () => {
       
       {/* Content */}
       <div className="relative z-20 text-center max-w-4xl mx-auto px-6">
+        {/* Profile Picture */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, delay: 0.1 }}
+          className="flex justify-center mb-8"
+        >
+          <motion.div
+            whileHover={{ y: -5, scale: 1.05 }}
+            transition={{ duration: 0.3 }}
+            className="relative"
+          >
+            <div className="absolute inset-0 bg-gradient-to-r from-neon-cyan/30 to-neon-purple/30 rounded-full blur-xl animate-pulse"></div>
+            <Avatar className="w-32 h-32 md:w-40 md:h-40 mx-auto relative border-2 border-primary/50 shadow-2xl shadow-neon-cyan/20">
+              <AvatarImage 
+                src={profilePlaceholder} 
+                alt="Alex Chen - Full Stack Developer"
+                className="object-cover"
+              />
+              <AvatarFallback className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent">
+                AC
+              </AvatarFallback>
+            </Avatar>
+          </motion.div>
+        </motion.div>
+
         <motion.h1 
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
