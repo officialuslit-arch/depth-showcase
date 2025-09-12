@@ -66,7 +66,7 @@ export const Hero = () => {
       <div className="relative z-20 max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-12 items-center min-h-screen py-20">
           {/* Text Content */}
-          <div className="text-center lg:text-left order-2 lg:order-1">
+          <div className="text-center lg:text-left order-1">
             <motion.h1 
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
@@ -119,7 +119,7 @@ export const Hero = () => {
           </div>
 
           {/* Profile Picture */}
-          <div className="flex justify-center lg:justify-end order-1 lg:order-2">
+          <div className="flex justify-center lg:justify-end order-2">
             <motion.div
               initial={{ opacity: 0, scale: 0.8, x: 50 }}
               animate={{ opacity: 1, scale: 1, x: 0 }}
