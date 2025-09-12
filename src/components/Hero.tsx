@@ -89,17 +89,18 @@ export const Hero = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.6 }}
-              className="text-lg mb-12 text-muted-foreground max-w-2xl lg:max-w-none"
+              className="text-lg mb-8 lg:mb-12 text-muted-foreground max-w-2xl lg:max-w-none"
             >
               Crafting immersive digital experiences with cutting-edge technology, 
               beautiful design, and innovative solutions.
             </motion.p>
             
+            {/* Buttons - Only visible on desktop */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.8 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+              className="hidden lg:flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
             >
               <Button 
                 variant="neon"
@@ -151,6 +152,31 @@ export const Hero = () => {
                 <div className="absolute -top-4 -right-4 w-8 h-8 bg-neon-cyan rounded-full shadow-neon-cyan animate-pulse"></div>
                 <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-neon-purple rounded-full shadow-neon-purple animate-pulse" style={{ animationDelay: '1s' }}></div>
               </motion.div>
+            </motion.div>
+          </div>
+
+          {/* Buttons - Mobile only, appears after image */}
+          <div className="flex lg:hidden justify-center order-3">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 1.0 }}
+              className="flex flex-col sm:flex-row gap-4 justify-center"
+            >
+              <Button 
+                variant="neon"
+                size="lg"
+                className="transition-all duration-300"
+              >
+                View My Work
+              </Button>
+              <Button 
+                variant="neon-outline"
+                size="lg"
+                className="transition-all duration-300"
+              >
+                Get In Touch
+              </Button>
             </motion.div>
           </div>
         </div>
