@@ -64,7 +64,7 @@ export const Hero = () => {
       
       {/* Content */}
       <div className="relative z-20 max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-12 items-center min-h-screen py-20">
+        <div className="grid lg:grid-cols-2 gap-12 items-center min-h-screen py-32 lg:py-20">
           {/* Text Content */}
           <div className="text-center lg:text-left order-1">
             <motion.h1 
@@ -139,9 +139,9 @@ export const Hero = () => {
                 <div className="relative bg-gradient-to-br from-card/80 to-card/40 backdrop-blur-sm rounded-2xl p-2 border border-primary/20 shadow-2xl">
                   <div className="relative overflow-hidden rounded-xl">
                     <img 
-                      src="/lovable-uploads/8aa8ee5a-1ed4-4e44-88de-30772070e48d.png"
+                      src="/lovable-uploads/d198868f-bea0-4b11-88bf-9b4560685473.png"
                       alt="Alex Chen - Full Stack Developer"
-                      className="w-80 h-96 sm:w-96 sm:h-[28rem] lg:w-[400px] lg:h-[500px] xl:w-[450px] xl:h-[550px] object-cover object-top transition-all duration-500 group-hover:scale-105"
+                      className="w-80 h-96 sm:w-96 sm:h-[28rem] lg:w-[400px] lg:h-[500px] xl:w-[450px] xl:h-[550px] object-cover object-center transition-all duration-500 group-hover:scale-105"
                     />
                     {/* Overlay gradient */}
                     <div className="absolute inset-0 bg-gradient-to-t from-background/20 via-transparent to-transparent"></div>
