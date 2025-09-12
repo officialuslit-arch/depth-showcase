@@ -1,8 +1,7 @@
 import { motion } from 'framer-motion';
 import { Card } from '@/components/ui/card';
-import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
-import { Code2, Palette, Zap } from 'lucide-react';
-import profilePlaceholder from '@/assets/profile-placeholder.jpg';
+import { Button } from '@/components/ui/button';
+import { Code2, Palette, Zap, Download } from 'lucide-react';
 
 const skills = [
   {
@@ -44,40 +43,6 @@ export const About = () => {
           </p>
         </motion.div>
         
-        {/* Profile Picture Section */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          viewport={{ once: true }}
-          className="flex justify-center mb-16"
-        >
-          <motion.div
-            whileHover={{ y: -10, rotateY: 15, scale: 1.05 }}
-            transition={{ duration: 0.3 }}
-            className="perspective-1000"
-          >
-            <Card className="glass-effect p-8 w-fit hover:shadow-deep transition-all duration-500 transform-3d">
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-neon-cyan/20 to-neon-purple/20 rounded-full blur-xl"></div>
-                <Avatar className="w-48 h-48 mx-auto relative border-2 border-primary/30 shadow-2xl">
-                  <AvatarImage 
-                    src={profilePlaceholder} 
-                    alt="Alex Chen - Full Stack Developer"
-                    className="object-cover"
-                  />
-                  <AvatarFallback className="text-4xl font-bold bg-gradient-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent">
-                    AC
-                  </AvatarFallback>
-                </Avatar>
-              </div>
-              <div className="text-center mt-6">
-                <h3 className="text-2xl font-bold neon-text">Alex Chen</h3>
-                <p className="text-accent font-medium">Full Stack Developer</p>
-              </div>
-            </Card>
-          </motion.div>
-        </motion.div>
         
         <div className="grid md:grid-cols-3 gap-8">
           {skills.map((skill, index) => {
@@ -118,11 +83,33 @@ export const About = () => {
               I've evolved into a full-stack developer who bridges the gap between technical excellence 
               and creative vision.
             </p>
-            <p className="text-muted-foreground leading-relaxed">
+            <p className="text-muted-foreground leading-relaxed mb-6">
               I believe in writing clean, maintainable code while creating experiences that are not just 
               functional, but delightful. When I'm not coding, you'll find me exploring new technologies, 
               contributing to open source, or working on creative side projects.
             </p>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              <Button 
+                variant="neon" 
+                size="lg"
+                className="group"
+                onClick={() => {
+                  // Add your resume file to public folder and update this path
+                  const link = document.createElement('a');
+                  link.href = '/resume.pdf';
+                  link.download = 'Alex_Chen_Resume.pdf';
+                  link.click();
+                }}
+              >
+                <Download className="w-5 h-5 mr-2 group-hover:animate-bounce" />
+                Download Resume
+              </Button>
+            </motion.div>
           </Card>
         </motion.div>
       </div>
