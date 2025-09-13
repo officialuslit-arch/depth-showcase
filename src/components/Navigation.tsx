@@ -109,33 +109,33 @@ export const Navigation = () => {
         </div>
         
         {/* Mobile menu */}
-        <motion.div
-          initial={false}
-          animate={{ 
-            height: isMobileMenuOpen ? 'auto' : 0,
-            opacity: isMobileMenuOpen ? 1 : 0
-          }}
-          transition={{ duration: 0.3 }}
-          className="md:hidden overflow-hidden glass-effect backdrop-blur-md"
-        >
-          <div className="px-6 py-4 space-y-2">
-            {navItems.map((item) => (
-              <motion.button
-                key={item.name}
-                onClick={() => scrollToSection(item.href)}
-                whileHover={{ x: 10 }}
-                whileTap={{ scale: 0.95 }}
-                className={`block w-full text-left px-4 py-3 rounded-lg transition-colors duration-300 ${
-                  activeSection === item.href.substring(1)
-                    ? 'text-neon-cyan bg-neon-cyan/10 border border-neon-cyan/20'
-                    : 'text-foreground hover:text-neon-cyan hover:bg-neon-cyan/5'
-                }`}
-              >
-                {item.name}
-              </motion.button>
-            ))}
-          </div>
-        </motion.div>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="md:hidden mt-4 glass-effect backdrop-blur-md rounded-lg border border-border/20"
+          >
+            <div className="px-6 py-4 space-y-2">
+              {navItems.map((item) => (
+                <motion.button
+                  key={item.name}
+                  onClick={() => scrollToSection(item.href)}
+                  whileHover={{ x: 10 }}
+                  whileTap={{ scale: 0.95 }}
+                  className={`block w-full text-left px-4 py-3 rounded-lg transition-colors duration-300 ${
+                    activeSection === item.href.substring(1)
+                      ? 'text-neon-cyan bg-neon-cyan/10 border border-neon-cyan/20'
+                      : 'text-foreground hover:text-neon-cyan hover:bg-neon-cyan/5'
+                  }`}
+                >
+                  {item.name}
+                </motion.button>
+              ))}
+            </div>
+          </motion.div>
+        )}
       </div>
     </motion.nav>
   );
