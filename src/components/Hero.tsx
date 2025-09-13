@@ -44,6 +44,13 @@ const Scene3D = () => {
 };
 
 export const Hero = () => {
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background */}
@@ -106,6 +113,7 @@ export const Hero = () => {
                 variant="neon"
                 size="lg"
                 className="transition-all duration-300"
+                onClick={() => scrollToSection('projects')}
               >
                 View My Work
               </Button>
@@ -113,6 +121,7 @@ export const Hero = () => {
                 variant="neon-outline"
                 size="lg"
                 className="transition-all duration-300"
+                onClick={() => scrollToSection('contact')}
               >
                 Get In Touch
               </Button>
@@ -167,6 +176,7 @@ export const Hero = () => {
                 variant="neon"
                 size="lg"
                 className="transition-all duration-300"
+                onClick={() => scrollToSection('projects')}
               >
                 View My Work
               </Button>
@@ -174,6 +184,7 @@ export const Hero = () => {
                 variant="neon-outline"
                 size="lg"
                 className="transition-all duration-300"
+                onClick={() => scrollToSection('contact')}
               >
                 Get In Touch
               </Button>

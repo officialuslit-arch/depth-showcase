@@ -28,10 +28,18 @@ const Index = () => {
         <div id="home">
           <Hero />
         </div>
-        <About />
-        <Projects />
-        <Skills />
-        <Contact />
+        <div id="about">
+          <About />
+        </div>
+        <div id="projects">
+          <Projects />
+        </div>
+        <div id="skills">
+          <Skills />
+        </div>
+        <div id="contact">
+          <Contact />
+        </div>
       </main>
       
       {/* Footer */}
