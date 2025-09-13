@@ -141,25 +141,23 @@ export const Hero = () => {
                 transition={{ duration: 0.4 }}
                 className="relative group"
               >
-                {/* Neon glow background */}
-                <div className="absolute inset-0 bg-gradient-to-r from-neon-cyan/30 to-neon-purple/30 rounded-2xl blur-2xl group-hover:blur-3xl transition-all duration-500 animate-pulse"></div>
+                {/* Subtle glow effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-neon-cyan/20 to-neon-purple/20 rounded-full blur-3xl group-hover:blur-4xl transition-all duration-500 opacity-60"></div>
                 
-                {/* Main image container */}
-                <div className="relative bg-gradient-to-br from-card/80 to-card/40 backdrop-blur-sm rounded-2xl p-2 border border-primary/20 shadow-2xl">
-                  <div className="relative overflow-hidden rounded-xl">
-                    <img 
-                      src="/lovable-uploads/d198868f-bea0-4b11-88bf-9b4560685473.png"
-                      alt="Alex Chen - Full Stack Developer"
-                      className="w-80 h-96 sm:w-96 sm:h-[28rem] lg:w-[400px] lg:h-[500px] xl:w-[450px] xl:h-[550px] object-cover object-center transition-all duration-500 group-hover:scale-105"
-                    />
-                    {/* Overlay gradient */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-background/20 via-transparent to-transparent"></div>
-                  </div>
+                {/* Profile image without box styling */}
+                <div className="relative">
+                  <img 
+                    src="/lovable-uploads/profile-new.png"
+                    alt="Alex Chen - Full Stack Developer"
+                    className="w-80 h-96 sm:w-96 sm:h-[28rem] lg:w-[400px] lg:h-[500px] xl:w-[450px] xl:h-[550px] object-cover object-center transition-all duration-500 group-hover:scale-105 rounded-2xl"
+                  />
+                  {/* Subtle overlay for better text contrast */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/10 via-transparent to-transparent rounded-2xl"></div>
                 </div>
 
                 {/* Floating accent elements */}
-                <div className="absolute -top-4 -right-4 w-8 h-8 bg-neon-cyan rounded-full shadow-neon-cyan animate-pulse"></div>
-                <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-neon-purple rounded-full shadow-neon-purple animate-pulse" style={{ animationDelay: '1s' }}></div>
+                <div className="absolute -top-4 -right-4 w-8 h-8 bg-neon-cyan rounded-full shadow-neon-cyan animate-pulse opacity-80"></div>
+                <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-neon-purple rounded-full shadow-neon-purple animate-pulse opacity-80" style={{ animationDelay: '1s' }}></div>
               </motion.div>
             </motion.div>
           </div>
