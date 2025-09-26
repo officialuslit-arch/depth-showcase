@@ -4,6 +4,12 @@ import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Mail, MapPin, Phone, Github, Linkedin, Twitter } from 'lucide-react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
+import { supabase } from '@/integrations/supabase/client';
+import { useToast } from '@/hooks/use-toast';
+import { useState } from 'react';
 
 const contactInfo = [
   {
@@ -47,7 +53,58 @@ const socialLinks = [
   }
 ];
 
+const contactFormSchema = z.object({
+  firstName: z.string().trim().min(1, "First name is required").max(100, "First name must be less than 100 characters"),
+  lastName: z.string().trim().min(1, "Last name is required").max(100, "Last name must be less than 100 characters"),
+  email: z.string().trim().email("Invalid email address").max(255, "Email must be less than 255 characters"),
+  subject: z.string().trim().min(1, "Subject is required").max(200, "Subject must be less than 200 characters"),
+  message: z.string().trim().min(1, "Message is required").max(1000, "Message must be less than 1000 characters")
+});
+
+type ContactFormData = z.infer<typeof contactFormSchema>;
+
 export const Contact = () => {
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  
+  const form = useForm<ContactFormData>({
+    resolver: zodResolver(contactFormSchema),
+    defaultValues: {
+      firstName: "",
+      lastName: "",
+      email: "",
+      subject: "",
+      message: ""
+    }
+  });
+
+  const onSubmit = async (data: ContactFormData) => {
+    setIsSubmitting(true);
+    try {
+      const { error } = await supabase.functions.invoke('send-contact-email', {
+        body: data
+      });
+
+      if (error) throw error;
+
+      toast({
+        title: "Message sent successfully!",
+        description: "Thank you for your message. I'll get back to you soon.",
+      });
+      
+      form.reset();
+    } catch (error) {
+      console.error('Error sending message:', error);
+      toast({
+        title: "Failed to send message",
+        description: "Please try again later or contact me directly.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section id="contact" className="py-20 px-6 bg-gradient-dark">
       <div className="max-w-6xl mx-auto">
@@ -75,55 +132,76 @@ export const Contact = () => {
           >
             <Card className="glass-effect p-8">
               <h3 className="text-2xl font-semibold mb-6">Send a Message</h3>
-              <form className="space-y-6">
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium mb-2">First Name</label>
                     <Input 
+                      {...form.register("firstName")}
                       placeholder="John" 
                       className="bg-muted/50 border-border focus:border-neon-cyan transition-colors"
                     />
+                    {form.formState.errors.firstName && (
+                      <p className="text-red-500 text-sm mt-1">{form.formState.errors.firstName.message}</p>
+                    )}
                   </div>
                   <div>
                     <label className="block text-sm font-medium mb-2">Last Name</label>
                     <Input 
+                      {...form.register("lastName")}
                       placeholder="Doe" 
                       className="bg-muted/50 border-border focus:border-neon-cyan transition-colors"
                     />
+                    {form.formState.errors.lastName && (
+                      <p className="text-red-500 text-sm mt-1">{form.formState.errors.lastName.message}</p>
+                    )}
                   </div>
                 </div>
                 
                 <div>
                   <label className="block text-sm font-medium mb-2">Email</label>
                   <Input 
+                    {...form.register("email")}
                     type="email" 
                     placeholder="john@example.com" 
                     className="bg-muted/50 border-border focus:border-neon-cyan transition-colors"
                   />
+                  {form.formState.errors.email && (
+                    <p className="text-red-500 text-sm mt-1">{form.formState.errors.email.message}</p>
+                  )}
                 </div>
                 
                 <div>
                   <label className="block text-sm font-medium mb-2">Subject</label>
                   <Input 
+                    {...form.register("subject")}
                     placeholder="Let's work together" 
                     className="bg-muted/50 border-border focus:border-neon-cyan transition-colors"
                   />
+                  {form.formState.errors.subject && (
+                    <p className="text-red-500 text-sm mt-1">{form.formState.errors.subject.message}</p>
+                  )}
                 </div>
                 
                 <div>
                   <label className="block text-sm font-medium mb-2">Message</label>
                   <Textarea 
+                    {...form.register("message")}
                     placeholder="Tell me about your project..."
                     rows={5}
                     className="bg-muted/50 border-border focus:border-neon-cyan transition-colors resize-none"
                   />
+                  {form.formState.errors.message && (
+                    <p className="text-red-500 text-sm mt-1">{form.formState.errors.message.message}</p>
+                  )}
                 </div>
                 
                 <Button 
                   type="submit"
-                  className="w-full bg-neon-cyan text-black hover:bg-neon-cyan/90 hover:shadow-neon-cyan transition-all duration-300"
+                  disabled={isSubmitting}
+                  className="w-full bg-neon-cyan text-black hover:bg-neon-cyan/90 hover:shadow-neon-cyan transition-all duration-300 disabled:opacity-50"
                 >
-                  Send Message
+                  {isSubmitting ? "Sending..." : "Send Message"}
                 </Button>
               </form>
             </Card>
