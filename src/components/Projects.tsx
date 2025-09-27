@@ -5,41 +5,32 @@ import { ExternalLink, Github } from 'lucide-react';
 
 const projects = [
   {
-    title: "EcoTracker",
-    description: "A sustainability app that helps users track their carbon footprint with AI-powered insights and gamification.",
-    tech: ["React", "Node.js", "MongoDB", "TensorFlow"],
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop",
-    demoUrl: "#",
-    githubUrl: "#",
+    title: "RideMate",
+    description: "Ride-sharing app that optimizes routes and matches riders in real-time.",
+    tech: ["React", "Node.js", "MongoDB", "Socket.io", "Google Maps API"],
+    image: "https://www.medianama.com/wp-content/uploads/2018/06/Screenshot_20180619-112715.png.png",
+    demoUrl: "https://ride-mate-frontend.onrender.com/",
+    githubUrl: "https://github.com/Uday-Shakya/Ride_mate",
     featured: true
   },
   {
-    title: "CryptoViz",
-    description: "Real-time cryptocurrency visualization dashboard with advanced charts and portfolio tracking.",
-    tech: ["Vue.js", "D3.js", "WebSocket", "Express"],
+    title: "AIGenie",
+    description: "AI SaaS platform offering customizable AI Tools for various needs.",
+    tech: ["ReactJS","TailwindCSS","Node.js","Express","MongoDB","GEMINI API"],
     image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=800&h=600&fit=crop",
-    demoUrl: "#",
-    githubUrl: "#",
+    demoUrl: "https://ai-genie-nu.vercel.app/",
+    githubUrl: "https://github.com/Uday-Shakya/AIGenie",
     featured: true
   },
   {
-    title: "ArtFlow Studio",
-    description: "Collaborative design platform for creative teams with real-time editing and version control.",
-    tech: ["React", "Socket.io", "PostgreSQL", "AWS"],
+    title: "Fitness Tracker",
+    description: "Web Based Fitness Tracker App To Follow Workout plan With Daily Goals like calories Count And Diet plan",
+    tech: ["React", "NodeJs", "ExpressJS", "MongoDB"],
     image: "https://images.unsplash.com/photo-1558655146-d09347e92766?w=800&h=600&fit=crop",
     demoUrl: "#",
-    githubUrl: "#",
+    githubUrl: "https://github.com/Uday-Shakya/driftlift-front",
     featured: false
   },
-  {
-    title: "MindfulAI",
-    description: "Mental health companion app using AI to provide personalized meditation and wellness recommendations.",
-    tech: ["React Native", "Python", "FastAPI", "OpenAI"],
-    image: "https://images.unsplash.com/photo-1545987796-200677ee1011?w=800&h=600&fit=crop",
-    demoUrl: "#",
-    githubUrl: "#",
-    featured: false
-  }
 ];
 
 export const Projects = () => {
@@ -105,6 +96,8 @@ export const Projects = () => {
                       variant="default" 
                       size="sm"
                       className="bg-neon-cyan text-black hover:bg-neon-cyan/90 hover:shadow-neon-cyan transition-all duration-300"
+                      onClick={() => window.open(project.demoUrl, '_blank')}
+                      disabled={project.demoUrl === '#'}
                     >
                       <ExternalLink className="w-4 h-4 mr-2" />
                       Live Demo
@@ -113,6 +106,8 @@ export const Projects = () => {
                       variant="outline" 
                       size="sm"
                       className="border-neon-purple text-neon-purple hover:bg-neon-purple hover:text-black transition-all duration-300"
+                      onClick={() => window.open(project.githubUrl, '_blank')}
+                      disabled={project.githubUrl === '#'}
                     >
                       <Github className="w-4 h-4 mr-2" />
                       Code
