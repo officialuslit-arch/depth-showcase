@@ -80,7 +80,7 @@ export const Hero = () => {
               transition={{ duration: 1, delay: 0.2 }}
               className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 neon-text"
             >
-              Alex Chen
+              Uday Shakya
             </motion.h1>
             
             <motion.p 
@@ -148,7 +148,7 @@ export const Hero = () => {
                 <div className="relative">
                   <img 
                     src="/lovable-uploads/profile-new.png"
-                    alt="Alex Chen - Full Stack Developer"
+                    alt="Uday Shakya - Full Stack Developer"
                     className="w-80 h-96 sm:w-96 sm:h-[28rem] lg:w-[400px] lg:h-[500px] xl:w-[450px] xl:h-[550px] object-cover object-center transition-all duration-500 group-hover:scale-105 rounded-2xl"
                   />
                   {/* Subtle overlay for better text contrast */}

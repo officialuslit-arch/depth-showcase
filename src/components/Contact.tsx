@@ -15,19 +15,19 @@ const contactInfo = [
   {
     icon: Mail,
     label: "Email",
-    value: "hello@alexchen.dev",
-    href: "mailto:hello@alexchen.dev"
+    value: "uday.shakya@example.com",
+    href: "mailto:uday.shakya@example.com"
   },
   {
     icon: Phone,
-    label: "Phone",
-    value: "+1 (555) 123-4567",
-    href: "tel:+15551234567"
+    label: "Phone", 
+    value: "+91 US",
+    href: "tel:+91US"
   },
   {
     icon: MapPin,
     label: "Location",
-    value: "San Francisco, CA",
+    value: "Gwalior, MP",
     href: "#"
   }
 ];
