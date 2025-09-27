@@ -15,14 +15,14 @@ const contactInfo = [
   {
     icon: Mail,
     label: "Email",
-    value: "uday.shakya@example.com",
-    href: "mailto:uday.shakya@example.com"
+    value: "udayshak8962@gmail.com",
+    href: "mailto:udayshak8962@gmail.com"
   },
   {
     icon: Phone,
     label: "Phone", 
-    value: "+91 US",
-    href: "tel:+91US"
+    value: "+917970240476",
+    href: "tel:+917970240476"
   },
   {
     icon: MapPin,
@@ -36,13 +36,13 @@ const socialLinks = [
   {
     icon: Github,
     label: "GitHub",
-    href: "https://github.com",
+    href: "https://github.com/Uday-Shakya",
     color: "hover:text-neon-cyan"
   },
   {
     icon: Linkedin,
     label: "LinkedIn",
-    href: "https://linkedin.com",
+    href: "https://www.linkedin.com/in/udayshakya",
     color: "hover:text-neon-purple"
   },
   {

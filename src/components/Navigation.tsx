@@ -62,7 +62,7 @@ export const Navigation = () => {
             className="text-2xl font-bold neon-text cursor-pointer"
             onClick={() => scrollToSection('#home')}
           >
-            AC
+            US
           </motion.div>
           
           <div className="hidden md:flex items-center space-x-8">

@@ -99,7 +99,7 @@ export const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <h1 className="text-6xl md:text-8xl font-bold neon-text">
-              AC
+              US
             </h1>
             <motion.div
               className="w-24 h-1 bg-gradient-neon mx-auto mt-4"
