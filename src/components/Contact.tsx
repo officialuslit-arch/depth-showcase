@@ -7,7 +7,7 @@ import { Mail, MapPin, Phone, Github, Linkedin, Twitter } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { supabase } from '@/integrations/supabase/client';
+import emailjs from '@emailjs/browser';
 import { useToast } from '@/hooks/use-toast';
 import { useState } from 'react';
 
@@ -81,11 +81,18 @@ export const Contact = () => {
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
     try {
-      const { error } = await supabase.functions.invoke('send-contact-email', {
-        body: data
-      });
-
-      if (error) throw error;
+      await emailjs.send(
+        'service_hq5yplm',
+        'template_tbqr4ni',
+        {
+          first_name: data.firstName,
+          last_name: data.lastName,
+          from_email: data.email,
+          subject: data.subject,
+          message: data.message,
+        },
+        'AhRWM5BsND_Tuyugs'
+      );
 
       toast({
         title: "Message sent successfully!",
