@@ -99,10 +99,9 @@ export const About = () => {
                 size="lg"
                 className="group"
                 onClick={() => {
-                  // Add your resume file to public folder and update this path
                   const link = document.createElement('a');
-                  link.href = '/resume.pdf';
-                  link.download = 'Alex_Chen_Resume.pdf';
+                  link.href = '/Uday_Shakya_Resume.pdf';
+                  link.download = 'Uday_Shakya_Resume.pdf';
                   link.click();
                 }}
               >
