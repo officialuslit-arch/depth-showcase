@@ -42,6 +42,9 @@ All colors MUST be HSL.
     --neon-purple: 258 90% 66%;
     --neon-pink: 330 100% 70%;
     --neon-green: 120 100% 50%;
+    --neon-orange: 30 100% 50%;
+    --neon-red: 0 100% 50%;
+    --neon-blue: 240 100% 50%;
 
     /* Gradients */
     --gradient-primary: linear-gradient(135deg, hsl(180 100% 50% / 0.2), hsl(258 90% 66% / 0.2));
@@ -145,9 +148,69 @@ All colors MUST be HSL.
   .transform-3d {
     transform-style: preserve-3d;
   }
+
+  .rgb-glow {
+    animation: rgb-glow 3s ease-in-out infinite;
+  }
+
+  .rgb-border {
+    background: linear-gradient(45deg, 
+      hsl(var(--neon-red)), 
+      hsl(var(--neon-orange)), 
+      hsl(var(--neon-green)), 
+      hsl(var(--neon-cyan)), 
+      hsl(var(--neon-blue)), 
+      hsl(var(--neon-purple)), 
+      hsl(var(--neon-pink))
+    );
+    background-size: 300% 300%;
+    animation: gradient-shift 4s ease infinite;
+  }
+
+  .hover-rgb {
+    transition: all 0.3s ease;
+  }
+
+  .hover-rgb:hover {
+    text-shadow: 
+      0 0 5px hsl(var(--neon-red)),
+      0 0 10px hsl(var(--neon-orange)),
+      0 0 15px hsl(var(--neon-green)),
+      0 0 20px hsl(var(--neon-cyan));
+  }
 }
 
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
   50% { transform: translateY(-20px); }
+}
+
+@keyframes rgb-glow {
+  0% { 
+    box-shadow: 0 0 20px hsl(var(--neon-red) / 0.7);
+  }
+  16.66% { 
+    box-shadow: 0 0 20px hsl(var(--neon-orange) / 0.7);
+  }
+  33.33% { 
+    box-shadow: 0 0 20px hsl(var(--neon-green) / 0.7);
+  }
+  50% { 
+    box-shadow: 0 0 20px hsl(var(--neon-cyan) / 0.7);
+  }
+  66.66% { 
+    box-shadow: 0 0 20px hsl(var(--neon-blue) / 0.7);
+  }
+  83.33% { 
+    box-shadow: 0 0 20px hsl(var(--neon-purple) / 0.7);
+  }
+  100% { 
+    box-shadow: 0 0 20px hsl(var(--neon-red) / 0.7);
+  }
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }

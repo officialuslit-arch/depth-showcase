@@ -62,56 +62,68 @@ export const Projects = () => {
               whileHover={{ y: -15, rotateX: 5, rotateY: 5 }}
               className={`perspective-1000 ${project.featured ? 'md:col-span-1' : ''}`}
             >
-              <Card className="glass-effect overflow-hidden h-full group hover:shadow-deep transition-all duration-500 transform-3d">
-                <div className="relative overflow-hidden">
-                  <img 
-                    src={project.image} 
-                    alt={project.title}
-                    className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <Card className="glass-effect overflow-hidden h-full group hover:shadow-deep transition-all duration-500 transform-3d rgb-glow relative">
+                <div className="absolute inset-0 rgb-border opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-lg p-[2px]">
+                  <div className="w-full h-full bg-background rounded-lg"></div>
                 </div>
-                
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-3 group-hover:text-neon-cyan transition-colors duration-300">
-                    {project.title}
-                  </h3>
-                  <p className="text-muted-foreground mb-4 leading-relaxed">
-                    {project.description}
-                  </p>
-                  
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.tech.map((tech) => (
-                      <span 
-                        key={tech}
-                        className="px-3 py-1 bg-muted rounded-full text-sm text-muted-foreground"
-                      >
-                        {tech}
-                      </span>
-                    ))}
+                <div className="relative bg-card rounded-lg overflow-hidden h-full">
+                  <div className="relative overflow-hidden">
+                    <img 
+                      src={project.image} 
+                      alt={project.title}
+                      className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>
                   
-                  <div className="flex gap-4">
-                    <Button 
-                      variant="default" 
-                      size="sm"
-                      className="bg-neon-cyan text-black hover:bg-neon-cyan/90 hover:shadow-neon-cyan transition-all duration-300"
-                      onClick={() => window.open(project.demoUrl, '_blank')}
-                      disabled={project.demoUrl === '#'}
-                    >
-                      <ExternalLink className="w-4 h-4 mr-2" />
-                      Live Demo
-                    </Button>
-                    <Button 
-                      variant="outline" 
-                      size="sm"
-                      className="border-neon-purple text-neon-purple hover:bg-neon-purple hover:text-black transition-all duration-300"
-                      onClick={() => window.open(project.githubUrl, '_blank')}
-                      disabled={project.githubUrl === '#'}
-                    >
-                      <Github className="w-4 h-4 mr-2" />
-                      Code
-                    </Button>
+                  <div className="p-6">
+                    <h3 className="text-xl font-semibold mb-3 group-hover:text-neon-cyan transition-colors duration-300 hover-rgb">
+                      {project.title}
+                    </h3>
+                    <p className="text-muted-foreground mb-4 leading-relaxed">
+                      {project.description}
+                    </p>
+                    
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {project.tech.map((tech, techIndex) => (
+                        <span 
+                          key={tech}
+                          className={`px-3 py-1 bg-muted rounded-full text-sm text-muted-foreground hover-rgb transition-all duration-300 ${
+                            techIndex % 6 === 0 ? 'hover:text-neon-red' :
+                            techIndex % 6 === 1 ? 'hover:text-neon-orange' :
+                            techIndex % 6 === 2 ? 'hover:text-neon-green' :
+                            techIndex % 6 === 3 ? 'hover:text-neon-cyan' :
+                            techIndex % 6 === 4 ? 'hover:text-neon-blue' :
+                            'hover:text-neon-purple'
+                          }`}
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                    
+                    <div className="flex gap-4">
+                      <Button 
+                        variant="default" 
+                        size="sm"
+                        className="bg-neon-cyan text-black hover:bg-neon-cyan/90 hover:shadow-neon-cyan transition-all duration-300 rgb-glow"
+                        onClick={() => window.open(project.demoUrl, '_blank')}
+                        disabled={project.demoUrl === '#'}
+                      >
+                        <ExternalLink className="w-4 h-4 mr-2" />
+                        Live Demo
+                      </Button>
+                      <Button 
+                        variant="outline" 
+                        size="sm"
+                        className="border-neon-purple text-neon-purple hover:bg-neon-purple hover:text-black transition-all duration-300 rgb-glow"
+                        onClick={() => window.open(project.githubUrl, '_blank')}
+                        disabled={project.githubUrl === '#'}
+                      >
+                        <Github className="w-4 h-4 mr-2" />
+                        Code
+                      </Button>
+                    </div>
                   </div>
                 </div>
               </Card>
