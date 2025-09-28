@@ -97,7 +97,7 @@ export const About = () => {
               <Button 
                 variant="neon" 
                 size="lg"
-                className="group"
+                className="group button-rgb-glow"
                 onClick={() => {
                   const link = document.createElement('a');
                   link.href = '/Uday_Shakya_Resume.pdf';

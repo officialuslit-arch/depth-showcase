@@ -112,7 +112,7 @@ export const Hero = () => {
               <Button 
                 variant="neon"
                 size="lg"
-                className="transition-all duration-300"
+                className="transition-all duration-300 button-rgb-glow"
                 onClick={() => scrollToSection('projects')}
               >
                 View My Work
@@ -120,7 +120,7 @@ export const Hero = () => {
               <Button 
                 variant="neon-outline"
                 size="lg"
-                className="transition-all duration-300"
+                className="transition-all duration-300 button-rgb-glow"
                 onClick={() => scrollToSection('contact')}
               >
                 Get In Touch
@@ -173,7 +173,7 @@ export const Hero = () => {
               <Button 
                 variant="neon"
                 size="lg"
-                className="transition-all duration-300"
+                className="transition-all duration-300 button-rgb-glow"
                 onClick={() => scrollToSection('projects')}
               >
                 View My Work
@@ -181,7 +181,7 @@ export const Hero = () => {
               <Button 
                 variant="neon-outline"
                 size="lg"
-                className="transition-all duration-300"
+                className="transition-all duration-300 button-rgb-glow"
                 onClick={() => scrollToSection('contact')}
               >
                 Get In Touch

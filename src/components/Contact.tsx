@@ -206,7 +206,7 @@ export const Contact = () => {
                 <Button 
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-neon-cyan text-black hover:bg-neon-cyan/90 hover:shadow-neon-cyan transition-all duration-300 disabled:opacity-50"
+                  className="w-full bg-neon-cyan text-black hover:bg-neon-cyan/90 hover:shadow-neon-cyan transition-all duration-300 disabled:opacity-50 button-rgb button-rgb-glow"
                 >
                   {isSubmitting ? "Sending..." : "Send Message"}
                 </Button>
