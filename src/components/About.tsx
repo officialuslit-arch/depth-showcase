@@ -38,7 +38,7 @@ export const About = () => {
           <h2 className="text-4xl md:text-5xl font-bold mb-6 neon-text">About Me</h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
             I'm a passionate developer who loves creating digital experiences that push the boundaries 
-            of what's possible on the web. With 5+ years of experience, I specialize in building 
+            of what's possible on the web. I specialize in building 
             modern, performant applications that users love.
           </p>
         </motion.div>
