@@ -60,7 +60,7 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        sans: ['Inter', 'ui-sans-serif', 'system-ui'],
+        sans: ['Space Grotesk', 'Inter', 'ui-sans-serif', 'system-ui'],
       },
       boxShadow: {
         'neon-cyan': 'var(--glow-cyan)',

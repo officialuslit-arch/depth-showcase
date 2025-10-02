@@ -65,7 +65,7 @@ export const Navigation = () => {
             US
           </motion.div>
           
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-8 font-semibold">
             {navItems.map((item, index) => (
               <motion.button
                 key={item.name}
@@ -121,7 +121,7 @@ export const Navigation = () => {
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden mt-4 glass-effect backdrop-blur-md rounded-lg border border-border/20"
+            className="md:hidden mt-4 glass-effect backdrop-blur-md rounded-lg border border-border/20 font-semibold"
           >
             <div className="px-6 py-4 space-y-2">
               {navItems.map((item, index) => (
