@@ -78,7 +78,7 @@ export const Hero = () => {
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.2 }}
-              className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 neon-text"
+              className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 neon-text lg:whitespace-nowrap"
             >
               UDAY SHAKYA
             </motion.h1>
