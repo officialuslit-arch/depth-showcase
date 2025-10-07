@@ -122,19 +122,29 @@ export const Skills = () => {
         </div>
 
         {/* Moving Skills Banner */}
-        <div className="mt-20 overflow-hidden">
-          <div className="relative py-8">
-            <div className="flex animate-scroll whitespace-nowrap">
-              {[...Array(2)].map((_, i) => (
+        <div className="mt-20 overflow-hidden relative">
+          <div className="absolute inset-0 bg-gradient-to-r from-neon-cyan/10 via-neon-purple/10 to-neon-pink/10 backdrop-blur-sm"></div>
+          <div className="relative py-12 border-y border-neon-cyan/20">
+            <div className="flex animate-scroll-fast whitespace-nowrap">
+              {[...Array(3)].map((_, i) => (
                 <div key={i} className="flex items-center">
-                  {skillCategories.flatMap(cat => cat.skills).map((skill, idx) => (
-                    <span
-                      key={`${i}-${idx}`}
-                      className="mx-8 text-2xl md:text-3xl font-bold text-neon-cyan/80 hover:text-neon-purple transition-colors duration-300"
-                    >
-                      {skill.name}
-                    </span>
-                  ))}
+                  {skillCategories.flatMap(cat => cat.skills).map((skill, idx) => {
+                    const colors = [
+                      'text-neon-cyan',
+                      'text-neon-purple', 
+                      'text-neon-pink',
+                      'text-neon-green'
+                    ];
+                    const colorClass = colors[idx % colors.length];
+                    return (
+                      <span
+                        key={`${i}-${idx}`}
+                        className={`mx-12 text-3xl md:text-4xl font-black ${colorClass} hover:scale-110 transition-transform duration-300 font-mono tracking-wider drop-shadow-[0_0_10px_currentColor]`}
+                      >
+                        {skill.name}
+                      </span>
+                    );
+                  })}
                 </div>
               ))}
             </div>
