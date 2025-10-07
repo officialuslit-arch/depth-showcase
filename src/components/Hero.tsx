@@ -50,14 +50,28 @@ export const Hero = () => {
   
   useEffect(() => {
     let currentIndex = 0;
+    let isDeleting = false;
+    
     const typingInterval = setInterval(() => {
-      if (currentIndex <= fullText.length) {
+      if (!isDeleting && currentIndex <= fullText.length) {
         setDisplayedText(fullText.slice(0, currentIndex));
         currentIndex++;
-      } else {
-        clearInterval(typingInterval);
+        
+        if (currentIndex > fullText.length) {
+          setTimeout(() => {
+            isDeleting = true;
+          }, 2000);
+        }
+      } else if (isDeleting && currentIndex >= 0) {
+        setDisplayedText(fullText.slice(0, currentIndex));
+        currentIndex--;
+        
+        if (currentIndex < 0) {
+          isDeleting = false;
+          currentIndex = 0;
+        }
       }
-    }, 100);
+    }, isDeleting ? 50 : 100);
 
     return () => clearInterval(typingInterval);
   }, []);
