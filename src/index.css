@@ -268,3 +268,12 @@ All colors MUST be HSL.
       0 0 15px hsl(var(--neon-red) / 0.1);
   }
 }
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}

@@ -120,6 +120,26 @@ export const Skills = () => {
             </motion.div>
           ))}
         </div>
+
+        {/* Moving Skills Banner */}
+        <div className="mt-20 overflow-hidden">
+          <div className="relative py-8">
+            <div className="flex animate-scroll whitespace-nowrap">
+              {[...Array(2)].map((_, i) => (
+                <div key={i} className="flex items-center">
+                  {skillCategories.flatMap(cat => cat.skills).map((skill, idx) => (
+                    <span
+                      key={`${i}-${idx}`}
+                      className="mx-8 text-2xl md:text-3xl font-bold text-neon-cyan/80 hover:text-neon-purple transition-colors duration-300"
+                    >
+                      {skill.name}
+                    </span>
+                  ))}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
         
         <motion.div
           initial={{ opacity: 0, y: 50 }}

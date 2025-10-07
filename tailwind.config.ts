@@ -105,12 +105,21 @@ export default {
             transform: "translateX(100%)",
           },
         },
+        "scroll": {
+          "0%": {
+            transform: "translateX(0)",
+          },
+          "100%": {
+            transform: "translateX(-50%)",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "pulse-glow": "pulse-glow 2s ease-in-out infinite",
         "loading-bar": "loading-bar 2s ease-in-out infinite",
+        "scroll": "scroll 30s linear infinite",
       },
     },
   },
