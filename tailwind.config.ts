@@ -120,7 +120,7 @@ export default {
         "pulse-glow": "pulse-glow 2s ease-in-out infinite",
         "loading-bar": "loading-bar 2s ease-in-out infinite",
         "scroll": "scroll 30s linear infinite",
-        "scroll-fast": "scroll 15s linear infinite",
+        "scroll-fast": "scroll 5s linear infinite",
       },
     },
   },
