@@ -46,7 +46,7 @@ const Scene3D = () => {
 
 export const Hero = () => {
   const [displayedText, setDisplayedText] = useState('');
-  const fullText = 'UDAY SHAKYA';
+  const fullText = 'Uday Shakya';
   
   useEffect(() => {
     let currentIndex = 0;
