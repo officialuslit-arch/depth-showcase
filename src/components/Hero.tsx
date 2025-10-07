@@ -3,6 +3,7 @@ import { Canvas } from '@react-three/fiber';
 import { Float, Text3D } from '@react-three/drei';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
+import { useState, useEffect } from 'react';
 import heroBackground from '@/assets/hero-background.jpg';
 import profilePlaceholder from '@/assets/profile-placeholder.jpg';
 
@@ -44,6 +45,23 @@ const Scene3D = () => {
 };
 
 export const Hero = () => {
+  const [displayedText, setDisplayedText] = useState('');
+  const fullText = 'UDAY SHAKYA';
+  
+  useEffect(() => {
+    let currentIndex = 0;
+    const typingInterval = setInterval(() => {
+      if (currentIndex <= fullText.length) {
+        setDisplayedText(fullText.slice(0, currentIndex));
+        currentIndex++;
+      } else {
+        clearInterval(typingInterval);
+      }
+    }, 100);
+
+    return () => clearInterval(typingInterval);
+  }, []);
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -75,12 +93,13 @@ export const Hero = () => {
           {/* Text Content */}
           <div className="text-center lg:text-left order-1">
             <motion.h1 
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.2 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
               className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 neon-text lg:whitespace-nowrap"
             >
-              UDAY SHAKYA
+              {displayedText}
+              <span className="animate-pulse">|</span>
             </motion.h1>
             
             <motion.p 
