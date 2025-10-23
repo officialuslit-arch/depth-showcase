@@ -211,6 +211,45 @@ All colors MUST be HSL.
   .button-rgb-glow {
     animation: button-rgb-pulse 2s ease-in-out infinite;
   }
+
+  .animated-gradient-border {
+    position: relative;
+    background: hsl(var(--background));
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
+
+  .animated-gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    padding: 2px;
+    background: linear-gradient(
+      90deg,
+      hsl(var(--neon-red)),
+      hsl(var(--neon-orange)),
+      hsl(var(--neon-cyan)),
+      hsl(var(--neon-purple)),
+      hsl(var(--neon-pink)),
+      hsl(var(--neon-red))
+    );
+    background-size: 300% 300%;
+    animation: gradient-border-spin 3s linear infinite;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    filter: blur(0px) drop-shadow(0 0 10px currentColor);
+  }
+
+  .animated-gradient-border::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    background: inherit;
+    z-index: -1;
+  }
 }
 
 @keyframes float {
@@ -275,5 +314,17 @@ All colors MUST be HSL.
   }
   100% {
     transform: translateX(-50%);
+  }
+}
+
+@keyframes gradient-border-spin {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }
