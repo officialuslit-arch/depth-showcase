@@ -245,6 +245,11 @@ All colors MUST be HSL.
     z-index: -1;
     pointer-events: none;
   }
+
+  .animated-gradient-border:hover::before {
+    animation: none !important;
+    background-position: 50% 50%;
+  }
 }
 
 @keyframes float {
