@@ -18,7 +18,7 @@ All colors MUST be HSL.
     --popover: 0 0% 6%;
     --popover-foreground: 0 0% 95%;
 
-    --primary: 180 100% 50%;
+    --primary: 120 100% 50%;
     --primary-foreground: 0 0% 4%;
 
     --secondary: 0 0% 8%;
@@ -35,10 +35,10 @@ All colors MUST be HSL.
 
     --border: 0 0% 15%;
     --input: 0 0% 12%;
-    --ring: 180 100% 50%;
+    --ring: 120 100% 50%;
 
     /* Neon Colors */
-    --neon-cyan: 180 100% 50%;
+    --neon-cyan: 120 100% 50%;
     --neon-purple: 258 90% 66%;
     --neon-pink: 330 100% 70%;
     --neon-green: 120 100% 50%;
@@ -47,12 +47,12 @@ All colors MUST be HSL.
     --neon-blue: 240 100% 50%;
 
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(180 100% 50% / 0.2), hsl(258 90% 66% / 0.2));
-    --gradient-neon: linear-gradient(45deg, hsl(180 100% 50%), hsl(258 90% 66%));
+    --gradient-primary: linear-gradient(135deg, hsl(120 100% 50% / 0.2), hsl(258 90% 66% / 0.2));
+    --gradient-neon: linear-gradient(45deg, hsl(120 100% 50%), hsl(258 90% 66%));
     --gradient-dark: linear-gradient(135deg, hsl(0 0% 4%), hsl(0 0% 8%));
 
     /* Effects */
-    --glow-cyan: 0 0 20px hsl(180 100% 50% / 0.5);
+    --glow-cyan: 0 0 20px hsl(120 100% 50% / 0.5);
     --glow-purple: 0 0 20px hsl(258 90% 66% / 0.5);
     --shadow-deep: 0 25px 50px -12px hsl(0 0% 0% / 0.8);
 
@@ -83,7 +83,7 @@ All colors MUST be HSL.
     --card-foreground: 0 0% 95%;
     --popover: 0 0% 6%;
     --popover-foreground: 0 0% 95%;
-    --primary: 180 100% 50%;
+    --primary: 120 100% 50%;
     --primary-foreground: 0 0% 4%;
     --secondary: 0 0% 8%;
     --secondary-foreground: 0 0% 90%;
@@ -95,15 +95,15 @@ All colors MUST be HSL.
     --destructive-foreground: 0 0% 98%;
     --border: 0 0% 15%;
     --input: 0 0% 12%;
-    --ring: 180 100% 50%;
+    --ring: 120 100% 50%;
     --sidebar-background: 0 0% 6%;
     --sidebar-foreground: 0 0% 90%;
-    --sidebar-primary: 180 100% 50%;
+    --sidebar-primary: 120 100% 50%;
     --sidebar-primary-foreground: 0 0% 4%;
     --sidebar-accent: 0 0% 8%;
     --sidebar-accent-foreground: 0 0% 90%;
     --sidebar-border: 0 0% 15%;
-    --sidebar-ring: 180 100% 50%;
+    --sidebar-ring: 120 100% 50%;
   }
 }
 
