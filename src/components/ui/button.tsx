@@ -5,18 +5,18 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 animated-gradient-border",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 animated-gradient-border relative z-10",
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90 button-rgb",
-        destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90 button-rgb",
-        outline: "border-0 bg-background hover:bg-accent hover:text-accent-foreground button-rgb",
-        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80 button-rgb",
-        ghost: "hover:bg-accent hover:text-accent-foreground button-rgb",
+        default: "bg-primary text-black hover:bg-primary/90 button-rgb",
+        destructive: "bg-destructive text-white hover:bg-destructive/90 button-rgb",
+        outline: "border-0 bg-card/80 text-foreground hover:bg-accent hover:text-accent-foreground button-rgb",
+        secondary: "bg-card/80 text-foreground hover:bg-card button-rgb",
+        ghost: "bg-transparent text-foreground hover:bg-accent hover:text-accent-foreground button-rgb",
         link: "text-primary underline-offset-4 hover:underline",
-        neon: "bg-neon-cyan text-black hover:bg-neon-cyan/90 hover:shadow-neon-cyan button-rgb button-rgb-glow",
-        "neon-outline": "border-0 bg-background text-neon-purple hover:bg-neon-purple hover:text-black button-rgb button-rgb-glow",
+        neon: "bg-primary text-black hover:bg-primary/90 hover:shadow-neon-cyan button-rgb button-rgb-glow",
+        "neon-outline": "border-0 bg-card/80 text-primary hover:bg-primary hover:text-black button-rgb button-rgb-glow",
       },
       size: {
         default: "h-10 px-4 py-2",
