@@ -2,6 +2,14 @@ import { motion } from 'framer-motion';
 
 const skillCategories = [
   {
+    title: "Programming Languages",
+    skills: [
+      { name: "C++", level: 90 },
+      { name: "Java", level: 88 },
+      { name: "Python", level: 90 },
+    ]
+  },
+  {
     title: "Frontend",
     skills: [
       { name: "Reactjs", level: 95 },
@@ -13,7 +21,6 @@ const skillCategories = [
     title: "Backend",
     skills: [
       { name: "Node.js", level: 90 },
-      { name: "Python", level: 85 },
       { name: "PostgreSQL", level: 80 },
       { name: "MongoDB", level: 85 }
     ]
