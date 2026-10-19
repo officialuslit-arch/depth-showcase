@@ -100,8 +100,8 @@ export const About = () => {
                 className="group button-rgb-glow"
                 onClick={() => {
                   const link = document.createElement('a');
-                  link.href = '/Uday_Shakya_Resume.pdf';
-                  link.download = 'Uday_Shakya_Resume.pdf';
+                  link.href = '/Uday_Shakya_full_Stack_developer.pdf';
+                  link.download = 'Uday_Shakya_full_Stack_developer.pdf';
                   link.click();
                 }}
               >
