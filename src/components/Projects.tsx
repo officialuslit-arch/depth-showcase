@@ -23,11 +23,11 @@ const projects = [
     featured: true
   },
   {
-    title: "Fitness Tracker",
+    title: "Driftlift",
     description: "Web Based Fitness Tracker App To Follow Workout plan With Daily Goals like calories Count And Diet plan",
     tech: ["React", "NodeJs", "ExpressJS", "MongoDB"],
     image: "https://images.unsplash.com/photo-1558655146-d09347e92766?w=800&h=600&fit=crop",
-    demoUrl: "#",
+    demoUrl: "https://driftlift-front.vercel.app/",
     githubUrl: "https://github.com/Uday-Shakya/driftlift-front",
     featured: false
   },
