@@ -9,7 +9,7 @@ const projects = [
     description: "Ride-sharing app that optimizes routes and matches riders in real-time.",
     tech: ["React", "Node.js", "MongoDB", "Socket.io", "Google Maps API"],
     image: "https://www.medianama.com/wp-content/uploads/2018/06/Screenshot_20180619-112715.png.png",
-    demoUrl: "https://ride-mate-frontend.onrender.com/",
+    demoUrl: "https://ridemate-g8i3.onrender.com/",
     githubUrl: "https://github.com/Uday-Shakya/Ride_mate",
     featured: true
   },
