@@ -2,84 +2,34 @@ import { motion } from 'framer-motion';
 
 const skillCategories = [
   {
-    title: "Programming Languages",
-    skills: [
-      { name: "C++", level: 90 },
-      { name: "Java", level: 88 },
-      { name: "Python", level: 90 },
-    ]
+    title: 'Programming Languages & DSA',
+    skills: ['C++', 'Java', 'Python', 'Data Structures and Algorithms'],
   },
   {
-    title: "Frontend",
-    skills: [
-      { name: "Reactjs", level: 95 },
-      { name: "JavaScript", level: 90 },
-      { name: "Tailwind CSS", level: 95 },
-    ]
+    title: 'Frameworks & Libraries',
+    skills: ['React.js', 'Node.js', 'Express.js', 'Socket.io', 'Mongoose', 'TailwindCSS'],
   },
   {
-    title: "Backend",
-    skills: [
-      { name: "Node.js", level: 90 },
-      { name: "PostgreSQL", level: 80 },
-      { name: "MongoDB", level: 85 }
-    ]
+    title: 'Databases',
+    skills: ['MySQL', 'MongoDB', 'PostgreSQL'],
   },
   {
-    title: "Tools & Tech",
-    skills: [
-      { name: "Git/GitHub", level: 95 },
-      { name: "Figma", level: 88 }
-    ]
-  }
+    title: 'Web Technologies',
+    skills: ['HTML', 'CSS', 'JavaScript', 'TypeScript'],
+  },
+  {
+    title: 'Tools',
+    skills: ['Docker', 'Kubernetes', 'Postman', 'Vercel', 'Render'],
+  },
+  {
+    title: 'Version Control',
+    skills: ['Git', 'GitHub'],
+  },
+  {
+    title: 'Soft Skills',
+    skills: ['Communication', 'Problem Solving', 'Collaboration'],
+  },
 ];
-
-const CircularProgress = ({ percentage, delay }: { percentage: number; delay: number }) => {
-  const circumference = 2 * Math.PI * 45;
-  
-  return (
-    <div className="relative w-28 h-28">
-      <svg className="w-28 h-28 transform -rotate-90" viewBox="0 0 100 100">
-        <circle
-          cx="50"
-          cy="50"
-          r="45"
-          stroke="currentColor"
-          strokeWidth="6"
-          fill="transparent"
-          className="text-muted opacity-20"
-        />
-        <motion.circle
-          cx="50"
-          cy="50"
-          r="45"
-          stroke="currentColor"
-          strokeWidth="6"
-          fill="transparent"
-          strokeLinecap="round"
-          className="text-neon-cyan"
-          initial={{ strokeDasharray: circumference, strokeDashoffset: circumference }}
-          whileInView={{ 
-            strokeDashoffset: circumference - (percentage / 100) * circumference 
-          }}
-          transition={{ duration: 2, delay, ease: "easeOut" }}
-          viewport={{ once: true }}
-        />
-      </svg>
-      <div className="absolute inset-0 flex items-center justify-center">
-        <motion.span 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: delay + 1 }}
-          viewport={{ once: true }}
-          className="text-lg font-semibold text-neon-cyan"
-        >
-          {percentage}%
-        </motion.span>
-      </div>
-    </div>
-  );
-};
 
 export const Skills = () => {
   return (
@@ -92,88 +42,36 @@ export const Skills = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 neon-text">Skills & Expertise</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 neon-text">Skills &amp; Expertise</h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            A comprehensive overview of my technical skills and proficiency levels, 
-            built through years of hands-on experience and continuous learning.
+            Technologies, tools, and strengths I bring to full-stack development.
           </p>
         </motion.div>
-        
-        <div className="grid md:grid-cols-3 gap-12">
+
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
           {skillCategories.map((category, categoryIndex) => (
             <motion.div
               key={category.title}
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: categoryIndex * 0.2 }}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: categoryIndex * 0.08 }}
               viewport={{ once: true }}
-              className="text-center"
+              className="border-t border-border pt-5"
             >
-              <h3 className="text-2xl font-semibold mb-8 text-neon-purple">
-                {category.title}
-              </h3>
-              
-              <div className="space-y-8">
-                {category.skills.map((skill, skillIndex) => (
-                  <div key={skill.name} className="flex flex-col items-center">
-                    <CircularProgress 
-                      percentage={skill.level} 
-                      delay={categoryIndex * 0.2 + skillIndex * 0.1} 
-                    />
-                    <h4 className="mt-4 font-medium text-foreground">{skill.name}</h4>
-                  </div>
+              <h3 className="text-lg font-semibold mb-4 text-neon-purple">{category.title}</h3>
+              <ul className="flex flex-wrap gap-2">
+                {category.skills.map((skill) => (
+                  <li
+                    key={skill}
+                    className="rounded-md border border-border bg-muted px-3 py-2 text-sm text-foreground"
+                  >
+                    {skill}
+                  </li>
                 ))}
-              </div>
+              </ul>
             </motion.div>
           ))}
         </div>
-
-        {/* Moving Skills Banner */}
-        <div className="mt-20 overflow-hidden relative">
-          <div className="absolute inset-0 bg-gradient-to-r from-neon-cyan/10 via-neon-purple/10 to-neon-pink/10 backdrop-blur-sm"></div>
-          <div className="relative py-12 border-y border-neon-cyan/20">
-            <div className="flex animate-scroll-fast whitespace-nowrap">
-              {[...Array(3)].map((_, i) => (
-                <div key={i} className="flex items-center">
-                  {skillCategories.flatMap(cat => cat.skills).map((skill, idx) => {
-                    const colors = [
-                      'text-neon-cyan',
-                      'text-neon-purple', 
-                      'text-neon-pink',
-                      'text-neon-green'
-                    ];
-                    const colorClass = colors[idx % colors.length];
-                    return (
-                      <span
-                        key={`${i}-${idx}`}
-                        className={`mx-12 text-3xl md:text-4xl font-black ${colorClass} hover:scale-110 transition-transform duration-300 font-mono tracking-wider drop-shadow-[0_0_10px_currentColor]`}
-                      >
-                        {skill.name}
-                      </span>
-                    );
-                  })}
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-        
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          viewport={{ once: true }}
-          className="mt-20 text-center"
-        >
-          <div className="glass-effect p-8 rounded-lg max-w-4xl mx-auto">
-            <h3 className="text-2xl font-semibold mb-6">Always Learning</h3>
-            <p className="text-muted-foreground leading-relaxed">
-              Technology evolves rapidly, and I'm committed to staying at the forefront. Currently exploring 
-              WebAssembly, AI/ML integration, and advanced 3D web experiences. I believe in continuous 
-              improvement and adapting to new challenges.
-            </p>
-          </div>
-        </motion.div>
       </div>
     </section>
   );
