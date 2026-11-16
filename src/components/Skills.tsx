@@ -97,7 +97,7 @@ export const Skills = () => {
                 size="sm"
                 aria-pressed={view === 'matrix'}
                 onClick={() => setView('matrix')}
-                className={view === 'matrix' ? 'h-8 rounded-none bg-foreground text-background hover:bg-foreground/90 hover:text-background' : 'h-8 rounded-none text-muted-foreground'}
+                className={view === 'matrix' ? 'before:hidden h-8 rounded-none bg-foreground text-background hover:bg-foreground/90 hover:text-background' : 'before:hidden h-8 rounded-none text-muted-foreground'}
               >
                 <Grid2X2 aria-hidden="true" /> Matrix
               </Button>
@@ -107,7 +107,7 @@ export const Skills = () => {
                 size="sm"
                 aria-pressed={view === 'list'}
                 onClick={() => setView('list')}
-                className={view === 'list' ? 'h-8 rounded-none bg-foreground text-background hover:bg-foreground/90 hover:text-background' : 'h-8 rounded-none text-muted-foreground'}
+                className={view === 'list' ? 'before:hidden h-8 rounded-none bg-foreground text-background hover:bg-foreground/90 hover:text-background' : 'before:hidden h-8 rounded-none text-muted-foreground'}
               >
                 <Rows3 aria-hidden="true" /> Index
               </Button>
@@ -129,7 +129,7 @@ export const Skills = () => {
                   size="icon"
                   aria-label="Clear skill filter"
                   onClick={() => setQuery('')}
-                  className="absolute right-1 top-1 h-8 w-8 rounded-none text-muted-foreground"
+                  className="before:hidden absolute right-1 top-1 h-8 w-8 rounded-none text-muted-foreground"
                 >
                   <X aria-hidden="true" />
                 </Button>
@@ -162,7 +162,7 @@ export const Skills = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.45, delay: originalIndex * 0.035 }}
                   viewport={{ once: true }}
-                  className={`${category.span} group relative flex min-h-52 flex-col justify-between border-b border-r border-border/80 bg-background p-5 transition-colors duration-200 hover:bg-card/40 sm:p-7`}
+                  className={`${category.span} group relative flex min-h-[13rem] flex-col justify-between border-b border-r border-border/80 bg-background p-5 transition-colors duration-200 hover:bg-card/40 sm:p-7`}
                 >
                   <div className="mb-6 flex items-center justify-between gap-3">
                     <div className="flex min-w-0 items-center gap-3">
@@ -184,7 +184,7 @@ export const Skills = () => {
                         variant="ghost"
                         aria-pressed={selected === skill}
                         onClick={() => setSelected((current) => current === skill ? null : skill)}
-                        className={`h-auto min-h-9 whitespace-normal rounded-none border px-3 py-2 text-left text-sm font-normal transition-colors ${
+                        className={`before:hidden h-auto min-h-9 whitespace-normal rounded-none border px-3 py-2 text-left text-sm font-normal transition-colors ${
                           selected === skill
                             ? 'border-primary/60 bg-primary/10 text-primary'
                             : 'border-border bg-muted/50 text-foreground hover:border-primary/50 hover:bg-primary/5 hover:text-primary'
@@ -232,7 +232,7 @@ export const Skills = () => {
                           variant="ghost"
                           aria-pressed={selected === skill}
                           onClick={() => setSelected((current) => current === skill ? null : skill)}
-                          className={`h-auto rounded-none px-1 py-1 text-left ${selected === skill ? 'text-primary' : 'text-foreground'}`}
+                          className={`before:hidden h-auto rounded-none px-1 py-1 text-left ${selected === skill ? 'text-primary' : 'text-foreground'}`}
                         >
                           {skill}
                         </Button>
