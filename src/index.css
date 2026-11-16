@@ -328,3 +328,14 @@ All colors MUST be HSL.
     background-position: 0% 50%;
   }
 }
+
+/* About section bento cards */
+.bento-card{position:relative;background:rgba(17,17,23,.72);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.07);border-radius:1.25rem;transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s ease;overflow:hidden}
+.bento-card::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;background:radial-gradient(500px circle at var(--mouse-x,50%) var(--mouse-y,50%),rgba(255,30,56,.35),rgba(139,92,246,.25) 40%,transparent 75%);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .4s;pointer-events:none}
+.bento-card::after{content:"";position:absolute;inset:0;background:radial-gradient(420px circle at var(--mouse-x,50%) var(--mouse-y,50%),rgba(139,92,246,.08),rgba(255,30,56,.04) 45%,transparent 80%);opacity:0;transition:opacity .4s;pointer-events:none}
+.bento-card:hover{transform:translateY(-4px);box-shadow:0 20px 40px -15px rgba(0,0,0,.7),0 0 25px -5px rgba(139,92,246,.14)}
+.bento-card:hover::before,.bento-card:hover::after{opacity:1}
+.about-title-gradient{background:linear-gradient(135deg,#ff1e38,#f43f5e 50%,#a855f7);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.about-crimson-neon{color:#ff1e38;text-shadow:0 0 28px rgba(255,30,56,.45),0 0 60px rgba(255,30,56,.2)}
+.tab-panel-fade{animation:aboutFade .35s cubic-bezier(.22,1,.36,1) forwards}
+@keyframes aboutFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
