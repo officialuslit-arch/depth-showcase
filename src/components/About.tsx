@@ -40,7 +40,7 @@ export const About = () => {
     `px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition-all ${active ? 'bg-gradient-to-r from-[#ff1e38] to-[#8b5cf6] text-white shadow-md' : 'text-zinc-400 hover:text-zinc-200'}`;
 
   return (
-    <section id="about" className="relative py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
+    <section className="relative overflow-x-clip py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} viewport={{ once: true }} className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-xs font-mono tracking-wider uppercase text-zinc-300 mb-5">
@@ -52,12 +52,12 @@ export const About = () => {
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 mb-10 sm:mb-12">
-          <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.7 }} viewport={{ once: true }} onMouseMove={track} className="bento-card lg:col-span-7 p-6 sm:p-8 flex flex-col justify-between">
+          <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} viewport={{ once: true }} onMouseMove={track} className="bento-card lg:col-span-7 p-6 sm:p-8 flex flex-col justify-between">
             <div>
               <div className="flex flex-wrap items-center justify-between gap-3 mb-6 pb-4 border-b border-white/[0.07]">
-                <div className="inline-flex p-1 rounded-xl bg-black/40 border border-white/[0.08]" role="tablist">
-                  <button type="button" className={tabBtn(tab === 'overview')} onClick={() => setTab('overview')}>Overview</button>
-                  <button type="button" className={tabBtn(tab === 'philosophy')} onClick={() => setTab('philosophy')}>Engineering Philosophy</button>
+                <div className="inline-flex p-1 rounded-xl bg-black/40 border border-white/[0.08]" role="tablist" aria-label="About Me Tabs">
+                  <button type="button" role="tab" aria-selected={tab === 'overview'} className={tabBtn(tab === 'overview')} onClick={() => setTab('overview')}>Overview</button>
+                  <button type="button" role="tab" aria-selected={tab === 'philosophy'} className={tabBtn(tab === 'philosophy')} onClick={() => setTab('philosophy')}>Engineering Philosophy</button>
                 </div>
                 <span className="inline-flex items-center gap-1.5 text-xs font-mono text-emerald-400 bg-emerald-500/10 border border-emerald-500/25 px-3 py-1 rounded-full">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" /> Available for Projects
@@ -81,10 +81,10 @@ export const About = () => {
               )}
             </div>
             <div>
-              <div className="grid grid-cols-3 gap-3 sm:gap-4 pt-6 mt-6 border-t border-white/[0.07]">
-                <div className="p-3 rounded-xl bg-white/[0.025] border border-white/[0.06]"><div className="text-lg sm:text-2xl font-extrabold about-title-gradient font-mono">Full-Stack</div><div className="text-[11px] sm:text-xs text-zinc-400 mt-0.5">End-to-End Delivery</div></div>
-                <div className="p-3 rounded-xl bg-white/[0.025] border border-white/[0.06]"><div className="text-lg sm:text-2xl font-extrabold text-zinc-100 font-mono">99<span className="text-cyan-400">%</span></div><div className="text-[11px] sm:text-xs text-zinc-400 mt-0.5">Lighthouse Focus</div></div>
-                <div className="p-3 rounded-xl bg-white/[0.025] border border-white/[0.06]"><div className="text-lg sm:text-2xl font-extrabold text-zinc-100 font-mono">24<span className="text-violet-400">/7</span></div><div className="text-[11px] sm:text-xs text-zinc-400 mt-0.5">Problem Solver</div></div>
+              <div className="grid grid-cols-3 gap-2.5 sm:gap-4 pt-6 mt-6 border-t border-white/[0.07]">
+                <div className="p-2.5 sm:p-3 rounded-xl bg-white/[0.025] border border-white/[0.06]"><div className="text-sm sm:text-2xl font-extrabold about-title-gradient font-mono">Full-Stack</div><div className="text-[10px] sm:text-xs text-zinc-400 mt-0.5">End-to-End Delivery</div></div>
+                <div className="p-2.5 sm:p-3 rounded-xl bg-white/[0.025] border border-white/[0.06]"><div className="text-sm sm:text-2xl font-extrabold text-zinc-100 font-mono">99<span className="text-cyan-400">%</span></div><div className="text-[10px] sm:text-xs text-zinc-400 mt-0.5">Lighthouse Focus</div></div>
+                <div className="p-2.5 sm:p-3 rounded-xl bg-white/[0.025] border border-white/[0.06]"><div className="text-sm sm:text-2xl font-extrabold text-zinc-100 font-mono">24<span className="text-violet-400">/7</span></div><div className="text-[10px] sm:text-xs text-zinc-400 mt-0.5">Problem Solver</div></div>
               </div>
               <Button variant="neon" size="lg" className="group button-rgb-glow mt-6" asChild>
                 <a href="/Uday_Shakya_full_Stack_developer.pdf" download="Uday_Shakya_full_Stack_developer.pdf"><Download className="w-5 h-5 mr-2 group-hover:animate-bounce" />Download Resume</a>
@@ -92,7 +92,7 @@ export const About = () => {
             </div>
           </motion.div>
 
-          <motion.div initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.7 }} viewport={{ once: true }} onMouseMove={track} className="bento-card lg:col-span-5 p-5 sm:p-6 flex flex-col justify-between">
+          <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.1 }} viewport={{ once: true }} onMouseMove={track} className="bento-card lg:col-span-5 p-5 sm:p-6 flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between pb-3.5 mb-4 border-b border-white/[0.08]">
                 <div className="flex items-center gap-2">
