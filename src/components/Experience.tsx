@@ -2,70 +2,59 @@ import { motion } from 'framer-motion';
 import { BriefcaseBusiness, CalendarDays, MapPin } from 'lucide-react';
 
 const achievements = [
-  'Developed the complete frontend of UltraHustle, a freelancer marketplace, building 15+ responsive React.js screens with reusable components and centralized state management for smooth desktop and mobile navigation.',
-  'Engineered 8+ RESTful APIs with Node.js, Express.js, and MongoDB, using Mongoose schema validation, pagination, and optimized database queries for scalable frontend integration.',
-  'Built 6+ core modules for the company website and internal admin dashboard with the MERN stack, including Role-Based Access Control (RBAC) and dynamic data tables to automate team workflows.',
-  'Tested APIs end to end with Postman, resolved 15+ UI and backend bugs, and improved load times through React code-splitting, lazy loading, and Git/GitHub pull-request workflows.',
+  'Built the complete UltraHustle freelancer marketplace frontend: 15+ responsive React screens, reusable components, and centralized state.',
+  'Engineered 8+ REST APIs with Node.js, Express, and MongoDB, including Mongoose validation, pagination, and optimized queries.',
+  'Delivered 6+ company-site and admin-dashboard modules, including role-based access control and dynamic data tables.',
+  'Tested APIs in Postman, resolved 15+ bugs, and improved load times with code-splitting and lazy loading; collaborated through GitHub pull requests.',
 ];
 
 export const Experience = () => (
-  <section id="experience" className="px-6 py-20">
-    <div className="mx-auto max-w-6xl">
+  <section id="experience" className="bg-secondary/45 px-5 py-20 sm:px-8 sm:py-24">
+    <div className="mx-auto max-w-7xl">
       <motion.div
-        initial={{ opacity: 0, y: 40 }}
+        initial={{ opacity: 0, y: 14 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7 }}
+        transition={{ duration: 0.5 }}
         viewport={{ once: true }}
-        className="mb-12 text-center"
+        className="mb-10 flex flex-col gap-4 border-b border-border pb-7 sm:flex-row sm:items-end sm:justify-between"
       >
-        <h2 className="mb-4 text-4xl font-bold neon-text md:text-5xl">Experience</h2>
-        <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-          Building useful products, from polished interfaces to scalable APIs.
-        </p>
+        <div>
+          <p className="mb-3 font-mono text-xs text-primary">02 / EXPERIENCE</p>
+          <h2 className="font-display text-4xl sm:text-5xl">Work in practice.</h2>
+        </div>
+        <p className="max-w-md text-base leading-relaxed text-muted-foreground">Recent work across a marketplace, company products, and internal tools.</p>
       </motion.div>
 
       <motion.article
-        initial={{ opacity: 0, y: 36 }}
+        initial={{ opacity: 0, y: 14 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, delay: 0.1 }}
+        transition={{ duration: 0.55 }}
         viewport={{ once: true }}
-        className="glass-effect mx-auto max-w-4xl border-l-2 border-l-primary p-6 sm:p-9"
+        className="grid gap-8 border-b border-border pb-8 lg:grid-cols-[.78fr_1.22fr] lg:gap-16"
       >
-        <div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-start">
-          <div>
-            <div className="mb-3 flex items-center gap-3 text-primary">
-              <BriefcaseBusiness aria-hidden="true" className="h-5 w-5" />
-              <span className="text-sm font-semibold uppercase tracking-wide">Full Stack Developer Intern</span>
-            </div>
-            <h3 className="text-2xl font-semibold">DND Consultancy</h3>
+        <div>
+          <div className="mb-5 flex items-center gap-2 font-mono text-xs text-accent">
+            <BriefcaseBusiness aria-hidden="true" className="h-4 w-4" />
+            PROFESSIONAL EXPERIENCE
           </div>
-          <div className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-muted-foreground sm:justify-end">
-            <span className="inline-flex items-center gap-2">
-              <CalendarDays aria-hidden="true" className="h-4 w-4 text-primary" />
-              December 2025 – April 2026
-            </span>
-            <span className="inline-flex items-center gap-2">
-              <MapPin aria-hidden="true" className="h-4 w-4 text-primary" />
-              Remote
-            </span>
+          <h3 className="font-display text-3xl">Full Stack Developer Intern</h3>
+          <p className="mt-2 text-lg text-primary">DND Consultancy</p>
+          <div className="mt-6 space-y-3 border-t border-border pt-5 text-sm text-muted-foreground">
+            <p className="flex items-center gap-2"><CalendarDays aria-hidden="true" className="h-4 w-4 text-primary" />December 2025 – April 2026</p>
+            <p className="flex items-center gap-2"><MapPin aria-hidden="true" className="h-4 w-4 text-primary" />Remote</p>
           </div>
         </div>
-
-        <ul className="mt-8 space-y-5 border-t border-border pt-7">
-          {achievements.map((achievement, index) => (
-            <motion.li
-              key={achievement}
-              initial={{ opacity: 0, x: -12 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.45, delay: index * 0.08 }}
-              viewport={{ once: true }}
-              className="flex gap-4 text-sm leading-relaxed text-muted-foreground sm:text-base"
-            >
-              <span aria-hidden="true" className="mt-[0.65em] h-2 w-2 shrink-0 rounded-full bg-primary shadow-neon-cyan" />
-              <span>{achievement}</span>
-            </motion.li>
-          ))}
-        </ul>
+        <div>
+          <p className="mb-5 max-w-2xl text-base leading-relaxed text-muted-foreground">Contributed across the product lifecycle, from responsive customer-facing screens to API design, admin tools, and performance improvements.</p>
+          <ol className="divide-y divide-border border-t border-border">
+            {achievements.map((achievement, index) => (
+              <li key={achievement} className="grid grid-cols-[2.5rem_1fr] gap-3 py-4 text-sm leading-relaxed sm:text-base">
+                <span className="font-mono text-xs text-accent">0{index + 1}</span>
+                <span>{achievement}</span>
+              </li>
+            ))}
+          </ol>
+        </div>
       </motion.article>
     </div>
   </section>

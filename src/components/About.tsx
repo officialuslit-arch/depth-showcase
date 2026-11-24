@@ -1,148 +1,148 @@
-import { useState, MouseEvent } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { Copy, Download, ArrowUpRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Code2, Palette, Zap, Server, Container, Cpu, Gauge, ShieldCheck, Copy, Download } from 'lucide-react';
 
 const EMAIL = 'udayshak8962@gmail.com';
 
-const pillars = [
-  { icon: Code2, tag: '01 • Core', title: 'Full-Stack Development', desc: 'Expert in React, Node.js, TypeScript, and modern web technologies', chips: ['React', 'Node.js', 'TypeScript'], tone: 'rose' },
-  { icon: Palette, tag: '02 • Design', title: 'UI/UX Design', desc: 'Creating beautiful, intuitive interfaces with attention to detail', chips: ['TailwindCSS', 'Responsive', 'Motion'], tone: 'violet' },
-  { icon: Zap, tag: '03 • Speed', title: 'Performance Optimization', desc: 'Building fast, scalable applications with cutting-edge techniques', chips: ['Core Web Vitals', 'Caching'], tone: 'cyan' },
-  { icon: Server, tag: '04 • Systems', title: 'API & Backend Architecture', desc: 'Designing resilient RESTful APIs, real-time WebSockets, and scalable database schemas', chips: ['Express.js', 'Socket.io', 'PostgreSQL'], tone: 'rose' },
-  { icon: Container, tag: '05 • Cloud', title: 'Cloud & DevOps Automation', desc: 'Containerizing workflows with Docker and orchestrating seamless CI/CD deployments', chips: ['Docker', 'Kubernetes', 'CI/CD'], tone: 'violet' },
-  { icon: Cpu, tag: '06 • Logic', title: 'Problem Solving & DSA', desc: 'Writing clean, efficient algorithms and maintainable code rooted in strong CS fundamentals', chips: ['C++ / Java', 'Algorithms', 'Clean Code'], tone: 'cyan' },
+const capabilities = [
+  { title: 'Full-stack product work', description: 'React interfaces, Node.js services, and the data models that connect them.' },
+  { title: 'Responsive interface craft', description: 'Reusable components and thoughtful layouts that hold together across screens.' },
+  { title: 'APIs and data', description: 'REST endpoints, MongoDB, validation, pagination, and practical query tuning.' },
+  { title: 'Performance', description: 'Code-splitting and lazy loading to keep the experience moving.' },
+  { title: 'Delivery and tooling', description: 'Postman, GitHub pull requests, Docker, and Kubernetes.' },
+  { title: 'Problem solving', description: 'C++, Java, Python, and the fundamentals behind maintainable solutions.' },
 ];
 
-const toneCls: Record<string, { icon: string; chip: string }> = {
-  rose: { icon: 'bg-rose-500/10 border-rose-500/30 text-rose-400 shadow-[0_0_20px_rgba(255,30,56,0.2)]', chip: 'bg-rose-500/10 text-rose-300 border-rose-500/20' },
-  violet: { icon: 'bg-violet-500/15 border-violet-500/35 text-violet-400 shadow-[0_0_20px_rgba(139,92,246,0.22)]', chip: 'bg-violet-500/10 text-violet-300 border-violet-500/25' },
-  cyan: { icon: 'bg-cyan-500/10 border-cyan-400/30 text-cyan-400 shadow-[0_0_20px_rgba(6,182,212,0.2)]', chip: 'bg-cyan-500/10 text-cyan-300 border-cyan-500/20' },
-};
-
-const track = (e: MouseEvent<HTMLElement>) => {
-  const r = e.currentTarget.getBoundingClientRect();
-  e.currentTarget.style.setProperty('--mouse-x', `${e.clientX - r.left}px`);
-  e.currentTarget.style.setProperty('--mouse-y', `${e.clientY - r.top}px`);
-};
-
 export const About = () => {
-  const [tab, setTab] = useState<'overview' | 'philosophy'>('overview');
+  const [tab, setTab] = useState<'overview' | 'approach'>('overview');
   const [copied, setCopied] = useState(false);
 
-  const copy = async () => {
-    try { await navigator.clipboard.writeText(EMAIL); } catch { /* ignore */ }
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2400);
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(EMAIL);
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 2000);
+    } catch {
+      window.location.href = `mailto:${EMAIL}`;
+    }
   };
 
-  const tabBtn = (active: boolean) =>
-    `px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition-all ${active ? 'bg-gradient-to-r from-[#ff1e38] to-[#8b5cf6] text-white shadow-md' : 'text-zinc-400 hover:text-zinc-200'}`;
-
   return (
-    <section className="relative overflow-x-clip py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} viewport={{ once: true }} className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-xs font-mono tracking-wider uppercase text-zinc-300 mb-5">
-            <span className="relative flex w-2 h-2"><span className="absolute inset-0 rounded-full bg-[#ff1e38] animate-ping" /><span className="relative w-2 h-2 rounded-full bg-[#ff1e38]" /></span>
-            Identity &amp; Engineering Mindset
+    <section id="about" className="px-5 py-20 sm:px-8 sm:py-24">
+      <div className="mx-auto max-w-7xl">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.55 }}
+          viewport={{ once: true }}
+          className="mb-10 flex flex-col gap-4 border-b border-border pb-7 sm:flex-row sm:items-end sm:justify-between"
+        >
+          <div>
+            <p className="mb-3 font-mono text-xs text-primary">01 / ABOUT ME</p>
+            <h2 className="max-w-3xl font-display text-4xl leading-tight sm:text-5xl">Thoughtful interfaces.<br className="hidden sm:block" /> Dependable systems.</h2>
           </div>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-4 about-crimson-neon">About Me</h2>
-          <p className="text-zinc-400 text-base sm:text-lg">Bridging resilient backend architecture with high-craft interactive interfaces.</p>
+          <p className="max-w-md text-base leading-relaxed text-muted-foreground">
+            I enjoy turning ambitious product ideas into web experiences that feel straightforward to use and solid underneath.
+          </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 mb-10 sm:mb-12">
-          <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} viewport={{ once: true }} onMouseMove={track} className="bento-card lg:col-span-7 p-6 sm:p-8 flex flex-col justify-between">
+        <div className="grid lg:grid-cols-[1.15fr_.85fr]">
+          <div className="flex flex-col justify-between gap-8 py-2 sm:py-5 lg:pr-12">
             <div>
-              <div className="flex flex-wrap items-center justify-between gap-3 mb-6 pb-4 border-b border-white/[0.07]">
-                <div className="inline-flex p-1 rounded-xl bg-black/40 border border-white/[0.08]" role="tablist" aria-label="About Me Tabs">
-                  <button type="button" role="tab" aria-selected={tab === 'overview'} className={tabBtn(tab === 'overview')} onClick={() => setTab('overview')}>Overview</button>
-                  <button type="button" role="tab" aria-selected={tab === 'philosophy'} className={tabBtn(tab === 'philosophy')} onClick={() => setTab('philosophy')}>Engineering Philosophy</button>
-                </div>
-                <span className="inline-flex items-center gap-1.5 text-xs font-mono text-emerald-400 bg-emerald-500/10 border border-emerald-500/25 px-3 py-1 rounded-full">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" /> Available for Projects
-                </span>
+              <div className="mb-6 inline-flex border-b border-border" role="tablist" aria-label="About Uday">
+                <Button type="button" variant="ghost" size="sm" role="tab" aria-selected={tab === 'overview'} onClick={() => setTab('overview')} className={`rounded-none px-3 ${tab === 'overview' ? 'border-b-2 border-primary text-primary' : 'text-muted-foreground'}`}>
+                  Overview
+                </Button>
+                <Button type="button" variant="ghost" size="sm" role="tab" aria-selected={tab === 'approach'} onClick={() => setTab('approach')} className={`rounded-none px-3 ${tab === 'approach' ? 'border-b-2 border-primary text-primary' : 'text-muted-foreground'}`}>
+                  My approach
+                </Button>
               </div>
               {tab === 'overview' ? (
-                <div key="o" className="tab-panel-fade space-y-5">
-                  <p className="text-zinc-200 text-base sm:text-lg leading-relaxed">I'm a passionate developer who loves creating digital experiences that push the boundaries of what's possible on the web. I specialize in building modern, performant applications that users love.</p>
-                  <p className="text-zinc-400 text-sm sm:text-base leading-relaxed">From architecting real-time APIs and database schemas to crafting responsive, accessible UI systems, I focus on writing clean, scalable code that turns ambitious product ideas into reliable reality.</p>
-                </div>
+                <motion.div key="overview" initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} className="max-w-2xl space-y-4">
+                  <p className="text-lg leading-relaxed text-foreground">From architecting APIs and database schemas to shaping responsive interfaces, I work across the full product stack.</p>
+                  <p className="leading-relaxed text-muted-foreground">I value clear communication, practical problem solving, and code that is easy for a team to build on. My recent work spans a freelancer marketplace, company tools, and internal dashboards.</p>
+                </motion.div>
               ) : (
-                <div key="p" className="tab-panel-fade space-y-4">
-                  {[{ i: Gauge, c: toneCls.rose.icon, t: 'Performance as a First-Class Feature', d: 'Every millisecond matters—optimizing bundle sizes, database indexes, and render cycles from day one.' },
-                    { i: ShieldCheck, c: toneCls.violet.icon, t: 'Type-Safe & Maintainable Systems', d: 'Clean architecture, modular components, and predictable data flows that scale gracefully with teams.' }].map(({ i: I, c, t, d }) => (
-                    <div key={t} className="flex items-start gap-3">
-                      <div className={`w-8 h-8 rounded-lg border flex items-center justify-center shrink-0 mt-0.5 ${c}`}><I className="w-4 h-4" /></div>
-                      <div><h4 className="text-sm sm:text-base font-semibold text-zinc-100">{t}</h4><p className="text-xs sm:text-sm text-zinc-400 mt-0.5">{d}</p></div>
-                    </div>
-                  ))}
-                </div>
+                <motion.div key="approach" initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} className="max-w-2xl space-y-4">
+                  <p className="text-lg leading-relaxed text-foreground">Start with the real problem, make the important path feel simple, then build the foundation to support it.</p>
+                  <p className="leading-relaxed text-muted-foreground">That means reusable UI, well-tested APIs, and steady iteration with the people who will use and maintain the product.</p>
+                </motion.div>
               )}
             </div>
             <div>
-              <div className="grid grid-cols-3 gap-2.5 sm:gap-4 pt-6 mt-6 border-t border-white/[0.07]">
-                <div className="p-2.5 sm:p-3 rounded-xl bg-white/[0.025] border border-white/[0.06]"><div className="text-sm sm:text-2xl font-extrabold about-title-gradient font-mono">Full-Stack</div><div className="text-[10px] sm:text-xs text-zinc-400 mt-0.5">End-to-End Delivery</div></div>
-                <div className="p-2.5 sm:p-3 rounded-xl bg-white/[0.025] border border-white/[0.06]"><div className="text-sm sm:text-2xl font-extrabold text-zinc-100 font-mono">99<span className="text-cyan-400">%</span></div><div className="text-[10px] sm:text-xs text-zinc-400 mt-0.5">Lighthouse Focus</div></div>
-                <div className="p-2.5 sm:p-3 rounded-xl bg-white/[0.025] border border-white/[0.06]"><div className="text-sm sm:text-2xl font-extrabold text-zinc-100 font-mono">24<span className="text-violet-400">/7</span></div><div className="text-[10px] sm:text-xs text-zinc-400 mt-0.5">Problem Solver</div></div>
+              <div className="grid grid-cols-3 border-y border-border py-4">
+                {[
+                  { value: '15+', label: 'responsive screens' },
+                  { value: '8+', label: 'REST APIs' },
+                  { value: '6+', label: 'product modules' },
+                ].map((stat) => (
+                  <div key={stat.label} className="pr-2">
+                    <p className="font-display text-3xl text-primary sm:text-4xl">{stat.value}</p>
+                    <p className="mt-1 text-xs leading-snug text-muted-foreground sm:text-sm">{stat.label}</p>
+                  </div>
+                ))}
               </div>
-              <Button variant="neon" size="lg" className="group button-rgb-glow mt-6" asChild>
-                <a href="/Uday_Shakya_full_Stack_developer.pdf" download="Uday_Shakya_full_Stack_developer.pdf"><Download className="w-5 h-5 mr-2 group-hover:animate-bounce" />Download Resume</a>
+              <Button asChild className="mt-5">
+                <a href="/Uday_Shakya_full_Stack_developer.pdf" download="Uday_Shakya_full_Stack_developer.pdf">
+                  <Download aria-hidden="true" /> Download résumé
+                </a>
               </Button>
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.1 }} viewport={{ once: true }} onMouseMove={track} className="bento-card lg:col-span-5 p-5 sm:p-6 flex flex-col justify-between">
-            <div>
-              <div className="flex items-center justify-between pb-3.5 mb-4 border-b border-white/[0.08]">
-                <div className="flex items-center gap-2">
-                  <span className="w-3 h-3 rounded-full bg-[#ff1e38]/80" /><span className="w-3 h-3 rounded-full bg-amber-400/80" /><span className="w-3 h-3 rounded-full bg-emerald-400/80" />
-                  <span className="ml-2 text-xs font-mono text-zinc-400">developer.json</span>
+          <aside className="mt-10 border-y border-border bg-secondary/45 p-5 sm:p-7 lg:mt-0 lg:border-y-0 lg:border-l lg:pl-9">
+            <div className="mb-6 flex items-center justify-between gap-4 border-b border-border pb-3">
+              <p className="font-mono text-xs text-muted-foreground">PROFILE / 01</p>
+              <span className="inline-flex items-center gap-2 font-mono text-xs text-primary"><span className="h-2 w-2 rounded-full bg-primary" />Open to opportunities</span>
+            </div>
+            <dl className="divide-y divide-border">
+              {[
+                { label: 'Name', value: 'Uday Shakya' },
+                { label: 'Role', value: 'Full-stack developer' },
+                { label: 'Location', value: 'Gwalior, MP, India' },
+                { label: 'Focus', value: 'Modern full-stack web apps' },
+                { label: 'Core stack', value: 'React · Node.js · TypeScript · MongoDB' },
+              ].map((item) => (
+                <div key={item.label} className="grid grid-cols-[5.5rem_1fr] gap-3 py-3.5">
+                  <dt className="font-mono text-xs text-muted-foreground">{item.label}</dt>
+                  <dd className="text-sm leading-relaxed text-foreground">{item.value}</dd>
                 </div>
-                <button type="button" onClick={copy} className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white/[0.05] hover:bg-white/[0.1] border border-white/10 text-[11px] font-mono text-zinc-300 transition-colors">
-                  <Copy className="w-3 h-3 text-cyan-400" />{copied ? 'Copied!' : 'Copy Email'}
-                </button>
-              </div>
-              <pre className="font-mono text-xs sm:text-[13px] leading-relaxed overflow-x-auto text-zinc-300"><code>
-<span className="text-zinc-500">{'{'}</span>{'\n'}
-{'  '}<span className="text-violet-400">"name"</span>: <span className="text-emerald-400">"Uday Shakya"</span>,{'\n'}
-{'  '}<span className="text-violet-400">"role"</span>: <span className="text-emerald-400">"Full-Stack Developer"</span>,{'\n'}
-{'  '}<span className="text-violet-400">"location"</span>: <span className="text-amber-300">"Gwalior, MP, India 🇮🇳"</span>,{'\n'}
-{'  '}<span className="text-violet-400">"focus"</span>: <span className="text-cyan-300">"Modern Full-Stack Web Apps"</span>,{'\n'}
-{'  '}<span className="text-violet-400">"coreStack"</span>: <span className="text-zinc-500">[</span>{'\n'}
-{'    '}<span className="text-rose-400">"React"</span>, <span className="text-rose-400">"Node.js"</span>, <span className="text-rose-400">"TypeScript"</span>, <span className="text-rose-400">"MongoDB"</span>{'\n'}
-{'  '}<span className="text-zinc-500">]</span>,{'\n'}
-{'  '}<span className="text-violet-400">"status"</span>: <span className="text-emerald-400">"Open to Opportunities"</span>{'\n'}
-<span className="text-zinc-500">{'}'}</span></code></pre>
-            </div>
-            <div className="mt-4 pt-3 border-t border-white/[0.06] flex items-center justify-between gap-2 text-[11px] font-mono text-zinc-500">
-              <span>UTF-8 • TypeScript / MERN</span>
-              <span className={`text-cyan-400 transition-opacity ${copied ? 'opacity-100' : 'opacity-0'}`}>Copied: {EMAIL}</span>
-            </div>
-          </motion.div>
+              ))}
+            </dl>
+            <Button type="button" variant="outline" size="sm" onClick={copyEmail} className="mt-5">
+              <Copy aria-hidden="true" /> {copied ? 'Email copied' : 'Copy email'}
+            </Button>
+            <span className="sr-only" role="status">{copied ? `${EMAIL} copied to clipboard` : ''}</span>
+          </aside>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
-          {pillars.map((p, idx) => {
-            const I = p.icon; const t = toneCls[p.tone];
-            return (
-              <motion.article key={p.title} initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: idx * 0.08 }} viewport={{ once: true }} onMouseMove={track} className="bento-card p-6 sm:p-7 flex flex-col justify-between group">
+        <div className="mt-16 border-t border-border pt-6 sm:mt-20">
+          <div className="mb-5 flex items-center justify-between gap-4">
+            <h3 className="font-display text-2xl">What I bring</h3>
+            <span className="font-mono text-xs text-muted-foreground">A — F</span>
+          </div>
+          <div className="grid gap-x-10 md:grid-cols-2">
+            {capabilities.map((item, index) => (
+              <motion.article
+                key={item.title}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.35, delay: index * 0.04 }}
+                viewport={{ once: true }}
+                className="grid grid-cols-[2.5rem_1fr] gap-3 border-t border-border py-5"
+              >
+                <span className="font-mono text-xs text-accent">0{index + 1}</span>
                 <div>
-                  <div className="flex items-center justify-between mb-6">
-                    <div className={`w-12 h-12 rounded-2xl border flex items-center justify-center group-hover:scale-105 transition-transform ${t.icon}`}><I className="w-6 h-6" /></div>
-                    <span className="font-mono text-[11px] px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.07] text-zinc-400">{p.tag}</span>
-                  </div>
-                  <h3 className="text-lg sm:text-xl font-bold text-zinc-100 mb-2.5">{p.title}</h3>
-                  <p className="text-zinc-400 text-sm leading-relaxed">{p.desc}</p>
-                </div>
-                <div className="mt-6 pt-4 border-t border-white/[0.06] flex flex-wrap gap-1.5">
-                  {p.chips.map((c, i) => (
-                    <span key={c} className={`text-[11px] font-mono px-2 py-0.5 rounded border ${i === 0 ? t.chip : 'bg-white/[0.04] text-zinc-300 border-white/10'}`}>{c}</span>
-                  ))}
+                  <h4 className="font-medium">{item.title}</h4>
+                  <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{item.description}</p>
                 </div>
               </motion.article>
-            );
-          })}
+            ))}
+          </div>
+          <a href="#experience" className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline focus-ring">
+            See my recent experience <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
+          </a>
         </div>
       </div>
     </section>

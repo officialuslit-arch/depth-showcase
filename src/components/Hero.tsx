@@ -1,236 +1,70 @@
 import { motion } from 'framer-motion';
-import { Canvas } from '@react-three/fiber';
-import { Float, Text3D } from '@react-three/drei';
+import { ArrowDownRight, ArrowUpRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
-import { useState, useEffect } from 'react';
-import heroBackground from '@/assets/hero-background.jpg';
-import profilePlaceholder from '@/assets/profile-placeholder.jpg';
 
-const FloatingCube = () => {
-  return (
-    <Float speed={2} rotationIntensity={1} floatIntensity={2}>
-      <mesh>
-        <boxGeometry args={[1, 1, 1]} />
-        <meshStandardMaterial color="#00ffff" transparent opacity={0.6} />
-      </mesh>
-    </Float>
-  );
-};
+export const Hero = () => (
+  <section id="home" className="relative overflow-hidden px-5 pb-14 pt-24 sm:px-8 sm:pt-28 lg:min-h-[calc(100svh-4rem)] lg:pb-20">
+    <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1.08fr_.92fr] lg:gap-16">
+      <motion.div
+        initial={{ opacity: 0, y: 18 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.65, ease: 'easeOut' }}
+        className="order-2 lg:order-1"
+      >
+        <div className="inline-flex items-center gap-2 border border-border bg-card px-3 py-2 font-mono text-xs text-muted-foreground">
+          <span className="h-2 w-2 rounded-full bg-primary" aria-hidden="true" />
+          PORTFOLIO <span className="text-border">/</span> 2026
+        </div>
+        <h1 className="mt-7 font-display text-6xl font-semibold leading-[0.96] text-foreground sm:text-7xl lg:text-8xl">
+          Uday<br />
+          <span className="text-primary">Shakya</span>
+        </h1>
+        <p className="mt-7 max-w-xl text-xl leading-relaxed text-foreground sm:text-2xl">
+          Full-stack developer building clear, reliable web products—from the first screen to the underlying API.
+        </p>
+        <p className="mt-4 max-w-lg text-base leading-relaxed text-muted-foreground">
+          I bring thoughtful interfaces and dependable systems together, with React, Node.js, and a focus on the details people notice.
+        </p>
+        <div className="mt-8 flex flex-wrap gap-3">
+          <Button asChild size="lg">
+            <a href="#projects">Selected work <ArrowDownRight aria-hidden="true" /></a>
+          </Button>
+          <Button asChild size="lg" variant="outline">
+            <a href="#contact">Get in touch <ArrowUpRight aria-hidden="true" /></a>
+          </Button>
+        </div>
+        <div className="mt-10 flex flex-wrap gap-x-8 gap-y-3 border-t border-border pt-5 font-mono text-xs text-muted-foreground">
+          <span>Gwalior, India</span>
+          <span>Open to opportunities</span>
+        </div>
+      </motion.div>
 
-const FloatingTorus = ({ position }: { position: [number, number, number] }) => {
-  return (
-    <Float speed={1.5} rotationIntensity={2} floatIntensity={1.5}>
-      <mesh position={position}>
-        <torusGeometry args={[0.5, 0.2, 16, 100]} />
-        <meshStandardMaterial color="#8b5cf6" transparent opacity={0.4} />
-      </mesh>
-    </Float>
-  );
-};
-
-const Scene3D = () => {
-  return (
-    <Canvas camera={{ position: [0, 0, 5], fov: 60 }}>
-      <ambientLight intensity={0.3} />
-      <pointLight position={[10, 10, 10]} intensity={1} color="#00ffff" />
-      <pointLight position={[-10, -10, 10]} intensity={0.5} color="#8b5cf6" />
-      
-      <FloatingCube />
-      <FloatingTorus position={[3, 1, 0]} />
-      <FloatingTorus position={[-2, -2, 1]} />
-      <FloatingTorus position={[2, -1, -1]} />
-    </Canvas>
-  );
-};
-
-export const Hero = () => {
-  const [displayedText, setDisplayedText] = useState('');
-  const fullText = 'Uday Shakya';
-  
-  useEffect(() => {
-    let currentIndex = 0;
-    let isDeleting = false;
-    
-    const typingInterval = setInterval(() => {
-      if (!isDeleting && currentIndex <= fullText.length) {
-        setDisplayedText(fullText.slice(0, currentIndex));
-        currentIndex++;
-        
-        if (currentIndex > fullText.length) {
-          setTimeout(() => {
-            isDeleting = true;
-          }, 2000);
-        }
-      } else if (isDeleting && currentIndex >= 0) {
-        setDisplayedText(fullText.slice(0, currentIndex));
-        currentIndex--;
-        
-        if (currentIndex < 0) {
-          isDeleting = false;
-          currentIndex = 0;
-        }
-      }
-    }, isDeleting ? 50 : 100);
-
-    return () => clearInterval(typingInterval);
-  }, []);
-
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background */}
-      <div 
-        className="absolute inset-0 z-0"
-        style={{
-          backgroundImage: `url(${heroBackground})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          filter: 'brightness(0.3)'
-        }}
-      />
-      
-      {/* 3D Scene Overlay */}
-      <div className="absolute inset-0 z-10">
-        <Scene3D />
-      </div>
-      
-      {/* Content */}
-      <div className="relative z-20 max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-12 items-center min-h-screen py-32 lg:py-20">
-          {/* Text Content */}
-          <div className="text-center lg:text-left order-1">
-            <motion.h1 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
-              className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 neon-text lg:whitespace-nowrap"
-            >
-              {displayedText}
-              <span className="animate-pulse">|</span>
-            </motion.h1>
-            
-            <motion.p 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.4 }}
-              className="text-xl md:text-2xl mb-8 text-muted-foreground"
-            >
-              Full-Stack Developer & Creative Technologist
-            </motion.p>
-            
-            <motion.p 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.6 }}
-              className="text-lg mb-8 lg:mb-12 text-muted-foreground max-w-2xl lg:max-w-none"
-            >
-              Crafting immersive digital experiences with cutting-edge technology, 
-              beautiful design, and innovative solutions.
-            </motion.p>
-            
-            {/* Buttons - Only visible on desktop */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.8 }}
-              className="hidden lg:flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
-            >
-              <Button 
-                variant="neon"
-                size="lg"
-                className="transition-all duration-300 button-rgb-glow"
-                onClick={() => scrollToSection('projects')}
-              >
-                View My Work
-              </Button>
-              <Button 
-                variant="neon-outline"
-                size="lg"
-                className="transition-all duration-300 button-rgb-glow"
-                onClick={() => scrollToSection('contact')}
-              >
-                Get In Touch
-              </Button>
-            </motion.div>
-          </div>
-
-          {/* Profile Picture */}
-          <div className="flex justify-center lg:justify-end order-2">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8, x: 50 }}
-              animate={{ opacity: 1, scale: 1, x: 0 }}
-              transition={{ duration: 1.2, delay: 0.1 }}
-              className="relative"
-            >
-              <motion.div
-                whileHover={{ y: -10, scale: 1.02 }}
-                transition={{ duration: 0.4 }}
-                className="relative group"
-              >
-                {/* Subtle glow effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-neon-cyan/20 to-neon-purple/20 rounded-full blur-3xl group-hover:blur-4xl transition-all duration-500 opacity-60"></div>
-                
-                {/* Profile image without box styling */}
-                <div className="relative">
-                  <img 
-                    src="/lovable-uploads/profile-new.png"
-                    alt="UDAY SHAKYA - Full Stack Developer"
-                    className="w-80 h-96 sm:w-96 sm:h-[28rem] lg:w-[400px] lg:h-[500px] xl:w-[450px] xl:h-[550px] object-cover object-center transition-all duration-500 group-hover:scale-105 rounded-2xl"
-                  />
-                  {/* Subtle overlay for better text contrast */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/10 via-transparent to-transparent rounded-2xl"></div>
-                </div>
-
-                {/* Floating accent elements */}
-                <div className="absolute -top-4 -right-4 w-8 h-8 bg-neon-cyan rounded-full shadow-neon-cyan animate-pulse opacity-80"></div>
-                <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-neon-purple rounded-full shadow-neon-purple animate-pulse opacity-80" style={{ animationDelay: '1s' }}></div>
-              </motion.div>
-            </motion.div>
-          </div>
-
-          {/* Buttons - Mobile only, appears after image */}
-          <div className="flex lg:hidden justify-center order-3">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 1.0 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center"
-            >
-              <Button 
-                variant="neon"
-                size="lg"
-                className="transition-all duration-300 button-rgb-glow"
-                onClick={() => scrollToSection('projects')}
-              >
-                View My Work
-              </Button>
-              <Button 
-                variant="neon-outline"
-                size="lg"
-                className="transition-all duration-300 button-rgb-glow"
-                onClick={() => scrollToSection('contact')}
-              >
-                Get In Touch
-              </Button>
-            </motion.div>
+      <motion.figure
+        initial={{ opacity: 0, y: 18 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.75, delay: 0.1, ease: 'easeOut' }}
+        className="order-1 mx-auto w-full max-w-md lg:order-2 lg:max-w-none"
+      >
+        <div className="relative aspect-[4/4.65] overflow-hidden bg-secondary">
+          <img
+            src="/lovable-uploads/profile-new.png"
+            alt="Uday Shakya, full-stack developer"
+            className="h-full w-full object-cover object-center"
+            fetchPriority="high"
+          />
+          <div className="absolute bottom-0 left-0 right-0 flex items-end justify-between gap-4 border-t border-background/30 bg-foreground/85 px-4 py-3 text-background sm:px-5">
+            <div>
+              <p className="font-display text-lg">Uday Shakya</p>
+              <p className="font-mono text-xs text-background/70">Full-stack developer</p>
+            </div>
+            <span className="font-mono text-xs text-background/70">IND / 01</span>
           </div>
         </div>
-      </div>
-      
-      {/* Floating Elements */}
-      <div className="absolute bottom-10 left-10 floating-animation">
-        <div className="w-4 h-4 bg-neon-cyan rounded-full shadow-neon-cyan" />
-      </div>
-      <div className="absolute top-20 right-20 floating-animation" style={{ animationDelay: '2s' }}>
-        <div className="w-6 h-6 bg-neon-purple rounded-full shadow-neon-purple" />
-      </div>
-    </section>
-  );
-};
+        <figcaption className="mt-3 flex justify-between gap-4 font-mono text-[11px] text-muted-foreground">
+          <span>Interfaces, systems, and the space between.</span>
+          <span>01 — 06</span>
+        </figcaption>
+      </motion.figure>
+    </div>
+  </section>
+);

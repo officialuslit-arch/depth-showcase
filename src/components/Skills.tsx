@@ -1,257 +1,126 @@
 import { useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowUpRight, Grid2X2, Rows3, Search, X } from 'lucide-react';
+import { Grid2X2, Rows3, Search, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 
 const skillCategories = [
-  {
-    title: 'Frameworks & Libraries',
-    span: 'lg:col-span-7',
-    skills: ['React.js', 'Node.js', 'Express.js', 'Socket.io', 'Mongoose', 'TailwindCSS'],
-  },
-  {
-    title: 'Programming Languages & DSA',
-    span: 'lg:col-span-5',
-    skills: ['C++', 'Java', 'Python', 'Data Structures and Algorithms'],
-  },
-  {
-    title: 'Web Technologies',
-    span: 'lg:col-span-4',
-    skills: ['HTML', 'CSS', 'JavaScript', 'TypeScript'],
-  },
-  {
-    title: 'Databases',
-    span: 'lg:col-span-4',
-    skills: ['MySQL', 'MongoDB', 'PostgreSQL'],
-  },
-  {
-    title: 'Tools',
-    span: 'lg:col-span-4',
-    skills: ['Docker', 'Kubernetes', 'Postman', 'Vercel', 'Render'],
-  },
-  {
-    title: 'Version Control',
-    span: 'lg:col-span-5',
-    skills: ['Git', 'GitHub'],
-  },
-  {
-    title: 'Soft Skills',
-    span: 'lg:col-span-7',
-    skills: ['Communication', 'Problem Solving', 'Collaboration'],
-  },
+  { title: 'Frameworks & Libraries', skills: ['React.js', 'Node.js', 'Express.js', 'Socket.io', 'Mongoose', 'TailwindCSS'] },
+  { title: 'Programming Languages & DSA', skills: ['C++', 'Java', 'Python', 'Data Structures and Algorithms'] },
+  { title: 'Web Technologies', skills: ['HTML', 'CSS', 'JavaScript', 'TypeScript'] },
+  { title: 'Databases', skills: ['MySQL', 'MongoDB', 'PostgreSQL'] },
+  { title: 'Tools', skills: ['Docker', 'Kubernetes', 'Postman', 'Vercel', 'Render'] },
+  { title: 'Version Control', skills: ['Git', 'GitHub'] },
+  { title: 'Soft Skills', skills: ['Communication', 'Problem Solving', 'Collaboration'] },
 ];
 
 export const Skills = () => {
   const [query, setQuery] = useState('');
   const [view, setView] = useState<'matrix' | 'list'>('matrix');
   const [selected, setSelected] = useState<string | null>(null);
+  const normalizedQuery = query.trim().toLowerCase();
 
   const visibleCategories = useMemo(() => {
-    const normalizedQuery = query.trim().toLowerCase();
     if (!normalizedQuery) return skillCategories;
-
     return skillCategories
       .map((category) => ({
         ...category,
-        skills: category.skills.filter((skill) =>
-          `${skill} ${category.title}`.toLowerCase().includes(normalizedQuery),
-        ),
+        skills: category.skills.filter((skill) => `${skill} ${category.title}`.toLowerCase().includes(normalizedQuery)),
       }))
       .filter((category) => category.skills.length > 0);
-  }, [query]);
+  }, [normalizedQuery]);
 
   const selectedCategory = skillCategories.find((category) => category.skills.includes(selected ?? ''));
+  const skillCount = skillCategories.reduce((total, category) => total + category.skills.length, 0);
 
   return (
-    <section id="skills" className="px-6 py-20 md:py-24">
-      <div className="mx-auto max-w-6xl">
+    <section id="skills" className="bg-secondary/45 px-5 py-20 sm:px-8 sm:py-24">
+      <div className="mx-auto max-w-7xl">
         <motion.div
-          initial={{ opacity: 0, y: 28 }}
+          initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.65 }}
+          transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="grid items-end gap-8 border-b border-border/80 pb-8 lg:grid-cols-12"
+          className="grid gap-6 border-b border-border pb-7 lg:grid-cols-[1fr_auto] lg:items-end"
         >
-          <div className="space-y-4 lg:col-span-7">
-            <div className="flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-muted-foreground">
-              <span className="font-semibold text-primary">// 05</span>
-              <span>Technical specification</span>
-              <span className="text-border">—</span>
-              <span>2026</span>
-            </div>
-            <h2 className="text-4xl font-semibold leading-tight text-foreground md:text-5xl">
-              Skills &amp; Engineering{' '}
-              <span className="font-serif font-normal italic text-muted-foreground">Architecture.</span>
-            </h2>
-            <p className="max-w-2xl text-base leading-relaxed text-muted-foreground">
-              Technologies, tools, and strengths I bring to full-stack development.
-            </p>
+          <div>
+            <p className="mb-3 font-mono text-xs text-primary">04 / TOOLKIT</p>
+            <h2 className="font-display text-4xl sm:text-5xl">A practical toolkit.</h2>
+            <p className="mt-3 max-w-xl leading-relaxed text-muted-foreground">Languages, frameworks, and tools I use to take a product from idea to delivery.</p>
           </div>
-
-          <div className="flex flex-col items-start justify-end gap-3 sm:flex-row sm:items-center lg:col-span-5 lg:flex-col lg:items-end">
-            <div className="inline-flex border border-border bg-card/70 p-1" aria-label="Skill display style">
-              <Button
-                type="button"
-                variant="ghost"
-                size="sm"
-                aria-pressed={view === 'matrix'}
-                onClick={() => setView('matrix')}
-                className={view === 'matrix' ? 'before:hidden h-8 rounded-none bg-foreground text-background hover:bg-foreground/90 hover:text-background' : 'before:hidden h-8 rounded-none text-muted-foreground'}
-              >
-                <Grid2X2 aria-hidden="true" /> Matrix
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+            <div className="inline-flex border border-border bg-card p-1" aria-label="Skill display style">
+              <Button type="button" variant={view === 'matrix' ? 'default' : 'ghost'} size="sm" aria-pressed={view === 'matrix'} onClick={() => setView('matrix')}>
+                <Grid2X2 aria-hidden="true" /> Groups
               </Button>
-              <Button
-                type="button"
-                variant="ghost"
-                size="sm"
-                aria-pressed={view === 'list'}
-                onClick={() => setView('list')}
-                className={view === 'list' ? 'before:hidden h-8 rounded-none bg-foreground text-background hover:bg-foreground/90 hover:text-background' : 'before:hidden h-8 rounded-none text-muted-foreground'}
-              >
+              <Button type="button" variant={view === 'list' ? 'default' : 'ghost'} size="sm" aria-pressed={view === 'list'} onClick={() => setView('list')}>
                 <Rows3 aria-hidden="true" /> Index
               </Button>
             </div>
-
-            <div className="relative w-full sm:w-64 lg:w-72">
+            <div className="relative w-full sm:w-64">
               <Search aria-hidden="true" className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-              <Input
-                value={query}
-                onChange={(event) => setQuery(event.target.value)}
-                placeholder="Filter skills..."
-                aria-label="Filter skills"
-                className="h-10 rounded-none border-border bg-card/50 pl-9 pr-9 font-mono text-xs placeholder:text-muted-foreground/70"
-              />
-              {query && (
-                <Button
-                  type="button"
-                  variant="ghost"
-                  size="icon"
-                  aria-label="Clear skill filter"
-                  onClick={() => setQuery('')}
-                  className="before:hidden absolute right-1 top-1 h-8 w-8 rounded-none text-muted-foreground"
-                >
-                  <X aria-hidden="true" />
-                </Button>
-              )}
+              <Input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Filter skills" aria-label="Filter skills" className="h-10 rounded-sm bg-card pl-9 pr-10 text-sm" />
+              {query && <Button type="button" variant="ghost" size="icon" aria-label="Clear skill filter" onClick={() => setQuery('')} className="absolute right-1 top-1 h-8 w-8"><X aria-hidden="true" /></Button>}
             </div>
           </div>
         </motion.div>
 
-        <div className="flex min-h-14 flex-col justify-center gap-2 border-x border-b border-border bg-card/40 px-4 py-3 sm:flex-row sm:items-center sm:justify-between sm:px-6">
-          <div className="flex min-w-0 items-center gap-3">
-            <span className="inline-flex shrink-0 items-center gap-2 border border-primary/30 bg-primary/10 px-2 py-1 font-mono text-[10px] uppercase tracking-wider text-primary">
-              <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-              {selected ? 'Selected' : 'Skill index'}
-            </span>
-            <span className="truncate font-mono text-sm text-foreground">{selected ?? 'Explore the full stack'}</span>
-          </div>
-          <span className="font-mono text-xs text-muted-foreground">
-            {selectedCategory ? selectedCategory.title : `${skillCategories.length} domains · 27 skills`}
-          </span>
+        <div className="flex flex-col justify-between gap-2 border-b border-border py-4 sm:flex-row sm:items-center">
+          <p className="text-sm"><span className="font-medium">{selected ?? 'Full-stack development'}</span><span className="ml-2 text-muted-foreground">{selectedCategory ? `— ${selectedCategory.title}` : '— the tools I reach for'}</span></p>
+          <p className="font-mono text-xs text-muted-foreground">{skillCount} skills <span className="px-1">/</span> {visibleCategories.length} groups shown</p>
         </div>
 
         {view === 'matrix' ? (
-          <div className="grid grid-cols-1 border-l border-border/80 lg:grid-cols-12">
+          <div className="grid border-b border-border md:grid-cols-2 md:gap-x-10">
             {visibleCategories.map((category) => {
               const originalIndex = skillCategories.findIndex((item) => item.title === category.title);
               return (
-                <motion.article
-                  key={category.title}
-                  initial={{ opacity: 0, y: 18 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.45, delay: originalIndex * 0.035 }}
-                  viewport={{ once: true }}
-                  className={`${category.span} group relative flex min-h-[13rem] flex-col justify-between border-b border-r border-border/80 bg-background p-5 transition-colors duration-200 hover:bg-card/40 sm:p-7`}
-                >
-                  <div className="mb-6 flex items-center justify-between gap-3">
-                    <div className="flex min-w-0 items-center gap-3">
-                      <span className="border border-border bg-muted px-2 py-1 font-mono text-xs text-muted-foreground">
-                        {String(originalIndex + 1).padStart(2, '0')}
-                      </span>
-                      <h3 className="text-lg font-medium text-foreground">{category.title}</h3>
-                    </div>
-                    <span className="shrink-0 font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
-                      {category.skills.length} skills
-                    </span>
+                <motion.article key={category.title} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.35, delay: originalIndex * 0.025 }} viewport={{ once: true }} className="border-t border-border py-5 sm:py-6">
+                  <div className="mb-3 flex items-baseline justify-between gap-3">
+                    <h3 className="font-medium">{category.title}</h3>
+                    <span className="font-mono text-xs text-muted-foreground">{String(originalIndex + 1).padStart(2, '0')} / {category.skills.length}</span>
                   </div>
-
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-x-1 gap-y-1">
                     {category.skills.map((skill) => (
-                      <Button
-                        key={skill}
-                        type="button"
-                        variant="ghost"
-                        aria-pressed={selected === skill}
-                        onClick={() => setSelected((current) => current === skill ? null : skill)}
-                        className={`before:hidden h-auto min-h-9 whitespace-normal rounded-none border px-3 py-2 text-left text-sm font-normal transition-colors ${
-                          selected === skill
-                            ? 'border-primary/60 bg-primary/10 text-primary'
-                            : 'border-border bg-muted/50 text-foreground hover:border-primary/50 hover:bg-primary/5 hover:text-primary'
-                        }`}
-                      >
+                      <Button key={skill} type="button" variant="ghost" aria-pressed={selected === skill} onClick={() => setSelected((current) => current === skill ? null : skill)} className={`h-auto min-h-8 rounded-none px-2 py-1 text-sm font-normal ${selected === skill ? 'bg-primary text-primary-foreground hover:bg-primary/90' : 'text-muted-foreground hover:text-foreground'}`}>
                         {skill}
                       </Button>
                     ))}
                   </div>
-
-                  <div className="mt-6 flex items-center justify-between border-t border-border/60 pt-3 font-mono text-[10px] uppercase tracking-wider text-muted-foreground/70">
-                    <span>Domain // {category.title}</span>
-                    <ArrowUpRight aria-hidden="true" className="h-3.5 w-3.5 opacity-0 transition-opacity group-hover:opacity-100" />
-                  </div>
                 </motion.article>
               );
             })}
-            {visibleCategories.length === 0 && (
-              <p className="col-span-full border-b border-r border-border px-6 py-12 text-center text-muted-foreground">
-                No matching skills.
-              </p>
-            )}
+            {visibleCategories.length === 0 && <p className="border-t border-border py-10 text-sm text-muted-foreground">No skills match that search.</p>}
           </div>
         ) : (
-          <div className="overflow-x-auto border-x border-b border-border/80">
-            <table className="w-full min-w-[36rem] border-collapse text-left">
+          <div className="overflow-x-auto border-b border-border">
+            <table className="w-full min-w-[34rem] border-collapse text-left">
               <thead>
-                <tr className="border-b border-border bg-card/60 font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
-                  <th className="px-4 py-3 font-normal sm:px-6">No.</th>
-                  <th className="px-4 py-3 font-normal">Skill</th>
-                  <th className="px-4 py-3 font-normal">Category</th>
-                  <th className="px-4 py-3 font-normal">View</th>
+                <tr className="border-b border-border font-mono text-xs text-muted-foreground">
+                  <th scope="col" className="px-3 py-3 font-normal">No.</th>
+                  <th scope="col" className="px-3 py-3 font-normal">Skill</th>
+                  <th scope="col" className="px-3 py-3 font-normal">Category</th>
                 </tr>
               </thead>
               <tbody>
-                {visibleCategories.flatMap((category, categoryIndex) =>
-                  category.skills.map((skill, skillIndex) => (
-                    <tr key={skill} className="border-b border-border/60 transition-colors hover:bg-card/50">
-                      <td className="px-4 py-3 font-mono text-xs text-muted-foreground sm:px-6">
-                        {String(categoryIndex * 6 + skillIndex + 1).padStart(2, '0')}
-                      </td>
-                      <td className="px-4 py-3">
-                        <Button
-                          type="button"
-                          variant="ghost"
-                          aria-pressed={selected === skill}
-                          onClick={() => setSelected((current) => current === skill ? null : skill)}
-                          className={`before:hidden h-auto rounded-none px-1 py-1 text-left ${selected === skill ? 'text-primary' : 'text-foreground'}`}
-                        >
-                          {skill}
-                        </Button>
-                      </td>
-                      <td className="px-4 py-3 text-sm text-muted-foreground">{category.title}</td>
-                      <td className="px-4 py-3">
-                        <ArrowUpRight aria-hidden="true" className="h-4 w-4 text-muted-foreground" />
-                      </td>
+                {visibleCategories.flatMap((category) => category.skills.map((skill) => {
+                  const index = skillCategories.flatMap((group) => group.skills).indexOf(skill);
+                  return (
+                    <tr key={skill} className="border-b border-border/70 hover:bg-card/60">
+                      <td className="px-3 py-3 font-mono text-xs text-muted-foreground">{String(index + 1).padStart(2, '0')}</td>
+                      <td className="px-3 py-2"><Button type="button" variant="ghost" aria-pressed={selected === skill} onClick={() => setSelected((current) => current === skill ? null : skill)} className={`h-8 rounded-none px-2 ${selected === skill ? 'text-primary' : 'text-foreground'}`}>{skill}</Button></td>
+                      <td className="px-3 py-3 text-sm text-muted-foreground">{category.title}</td>
                     </tr>
-                  )),
-                )}
+                  );
+                }))}
               </tbody>
             </table>
+            {visibleCategories.length === 0 && <p className="py-10 text-center text-sm text-muted-foreground">No skills match that search.</p>}
           </div>
         )}
-
-        <div className="mt-5 flex flex-col gap-2 font-mono text-[10px] uppercase tracking-wider text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-          <span>Capabilities // {skillCategories.reduce((total, category) => total + category.skills.length, 0)} indexed</span>
-          <span>{visibleCategories.length} of {skillCategories.length} domains shown</span>
+        <div className="mt-4 flex flex-wrap justify-between gap-2 font-mono text-xs text-muted-foreground">
+          <span>TECHNICAL + COLLABORATIVE SKILLS</span>
+          <span>{visibleCategories.reduce((total, category) => total + category.skills.length, 0)} results</span>
         </div>
       </div>
     </section>

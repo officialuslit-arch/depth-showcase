@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Hero } from '@/components/Hero';
 import { About } from '@/components/About';
 import { Experience } from '@/components/Experience';
@@ -6,54 +5,25 @@ import { Projects } from '@/components/Projects';
 import { Skills } from '@/components/Skills';
 import { Contact } from '@/components/Contact';
 import { Navigation } from '@/components/Navigation';
-import { ParticleBackground } from '@/components/ParticleBackground';
-import { LoadingScreen } from '@/components/LoadingScreen';
 
-const Index = () => {
-  const [isLoading, setIsLoading] = useState(true);
-
-  const handleLoadingComplete = () => {
-    setIsLoading(false);
-  };
-
-  if (isLoading) {
-    return <LoadingScreen onComplete={handleLoadingComplete} />;
-  }
-
-  return (
-    <div className="relative min-h-screen bg-background text-foreground">
-      <ParticleBackground />
-      <Navigation />
-      
-      <main className="relative z-10">
-        <div id="home">
-          <Hero />
-        </div>
-        <div id="about">
-          <About />
-        </div>
-        <Experience />
-        <div id="projects">
-          <Projects />
-        </div>
-        <div id="skills">
-          <Skills />
-        </div>
-        <div id="contact">
-          <Contact />
-        </div>
-      </main>
-      
-      {/* Footer */}
-      <footer className="relative z-10 py-8 px-6 border-t border-border">
-        <div className="max-w-6xl mx-auto text-center">
-          <p className="text-muted-foreground">
-            © 2025 Uday Shakya. Built with React, Three.js, and lots of ❤️
-          </p>
-        </div>
-      </footer>
-    </div>
-  );
-};
+const Index = () => (
+  <div className="min-h-screen bg-background text-foreground">
+    <Navigation />
+    <main>
+      <Hero />
+      <About />
+      <Experience />
+      <Projects />
+      <Skills />
+      <Contact />
+    </main>
+    <footer className="border-t border-border px-5 py-7 sm:px-8">
+      <div className="mx-auto flex max-w-7xl flex-col gap-2 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+        <p>© {new Date().getFullYear()} Uday Shakya</p>
+        <p className="font-mono text-xs">Built with care in Gwalior, India.</p>
+      </div>
+    </footer>
+  </div>
+);
 
 export default Index;
