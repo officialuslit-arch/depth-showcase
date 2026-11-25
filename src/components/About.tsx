@@ -29,7 +29,7 @@ export const About = () => {
   };
 
   return (
-    <section id="about" className="px-5 py-20 sm:px-8 sm:py-24">
+    <section id="about" className="px-5 pb-20 pt-12 sm:px-8 sm:pb-24 sm:pt-14">
       <div className="mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 16 }}

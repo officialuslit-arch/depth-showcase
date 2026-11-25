@@ -138,7 +138,7 @@ export const Contact = () => {
                 })}
               </div>
             </div>
-            <p className="mt-10 border-t border-border pt-5 font-display text-xl leading-relaxed text-muted-foreground">“Good products make complex things feel clear.”</p>
+            <p className="mt-10 border-t border-border pt-5 text-sm leading-relaxed text-muted-foreground">I’m open to conversations about full-stack roles and collaborative product work.</p>
           </motion.aside>
         </div>
       </div>

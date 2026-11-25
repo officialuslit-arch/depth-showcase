@@ -3,8 +3,8 @@ import { ArrowDownRight, ArrowUpRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 export const Hero = () => (
-  <section id="home" className="relative overflow-hidden px-5 pb-14 pt-24 sm:px-8 sm:pt-28 lg:min-h-[calc(100svh-4rem)] lg:pb-20">
-    <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1.08fr_.92fr] lg:gap-16">
+  <section id="home" className="relative overflow-hidden px-5 pb-8 pt-20 sm:px-8 sm:pt-24 lg:min-h-[calc(100svh-4rem)] lg:pb-8 lg:pt-20">
+    <div className="mx-auto grid max-w-7xl items-center gap-7 lg:grid-cols-[1.08fr_.92fr] lg:gap-16">
       <motion.div
         initial={{ opacity: 0, y: 18 }}
         animate={{ opacity: 1, y: 0 }}
@@ -19,13 +19,10 @@ export const Hero = () => (
           Uday<br />
           <span className="text-primary">Shakya</span>
         </h1>
-        <p className="mt-7 max-w-xl text-xl leading-relaxed text-foreground sm:text-2xl">
-          Full-stack developer building clear, reliable web products—from the first screen to the underlying API.
+        <p className="mt-6 max-w-xl text-xl leading-relaxed text-foreground sm:text-2xl">
+          Full-stack developer building useful, dependable web products—from the first screen to the underlying API.
         </p>
-        <p className="mt-4 max-w-lg text-base leading-relaxed text-muted-foreground">
-          I bring thoughtful interfaces and dependable systems together, with React, Node.js, and a focus on the details people notice.
-        </p>
-        <div className="mt-8 flex flex-wrap gap-3">
+        <div className="mt-6 flex flex-wrap gap-3">
           <Button asChild size="lg">
             <a href="#projects">Selected work <ArrowDownRight aria-hidden="true" /></a>
           </Button>
@@ -33,17 +30,13 @@ export const Hero = () => (
             <a href="#contact">Get in touch <ArrowUpRight aria-hidden="true" /></a>
           </Button>
         </div>
-        <div className="mt-10 flex flex-wrap gap-x-8 gap-y-3 border-t border-border pt-5 font-mono text-xs text-muted-foreground">
-          <span>Gwalior, India</span>
-          <span>Open to opportunities</span>
-        </div>
       </motion.div>
 
       <motion.figure
         initial={{ opacity: 0, y: 18 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.75, delay: 0.1, ease: 'easeOut' }}
-        className="order-1 mx-auto w-full max-w-md lg:order-2 lg:max-w-none"
+        className="order-1 mx-auto w-full max-w-[16rem] lg:order-2 lg:max-w-[24rem] lg:justify-self-end"
       >
         <div className="relative aspect-[4/4.65] overflow-hidden bg-secondary">
           <img
@@ -60,8 +53,8 @@ export const Hero = () => (
             <span className="font-mono text-xs text-background/70">IND / 01</span>
           </div>
         </div>
-        <figcaption className="mt-3 flex justify-between gap-4 font-mono text-[11px] text-muted-foreground">
-          <span>Interfaces, systems, and the space between.</span>
+        <figcaption className="mt-3 hidden justify-between gap-4 font-mono text-[11px] text-muted-foreground lg:flex">
+          <span>Gwalior, India / Full-stack development</span>
           <span>01 — 06</span>
         </figcaption>
       </motion.figure>
