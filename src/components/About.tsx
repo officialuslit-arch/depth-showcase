@@ -47,73 +47,104 @@ export const About = () => {
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-[1.15fr_.85fr]">
-          <div className="flex flex-col justify-between gap-8 py-2 sm:py-5 lg:pr-12">
-            <div>
-              <div className="mb-6 inline-flex border-b border-border" role="tablist" aria-label="About Uday">
-                <Button type="button" variant="ghost" size="sm" role="tab" aria-selected={tab === 'overview'} onClick={() => setTab('overview')} className={`rounded-none px-3 ${tab === 'overview' ? 'border-b-2 border-primary text-primary' : 'text-muted-foreground'}`}>
-                  Overview
-                </Button>
-                <Button type="button" variant="ghost" size="sm" role="tab" aria-selected={tab === 'approach'} onClick={() => setTab('approach')} className={`rounded-none px-3 ${tab === 'approach' ? 'border-b-2 border-primary text-primary' : 'text-muted-foreground'}`}>
-                  My approach
-                </Button>
+        <div className="grid gap-8 lg:grid-cols-[1.15fr_.85fr] lg:items-stretch lg:gap-0">
+          <div className="flex flex-col justify-between gap-7 lg:pr-10">
+            <div className="border border-border bg-card p-6 sm:p-8">
+              <div className="mb-6 flex flex-wrap items-center justify-between gap-3 border-b border-border pb-4">
+                <div className="inline-flex border border-border bg-background p-1" role="tablist" aria-label="About Uday">
+                  <Button
+                    type="button"
+                    variant={tab === 'overview' ? 'default' : 'ghost'}
+                    size="sm"
+                    role="tab"
+                    aria-selected={tab === 'overview'}
+                    onClick={() => setTab('overview')}
+                    className={tab === 'overview' ? '' : 'text-muted-foreground'}
+                  >
+                    Overview
+                  </Button>
+                  <Button
+                    type="button"
+                    variant={tab === 'approach' ? 'default' : 'ghost'}
+                    size="sm"
+                    role="tab"
+                    aria-selected={tab === 'approach'}
+                    onClick={() => setTab('approach')}
+                    className={tab === 'approach' ? '' : 'text-muted-foreground'}
+                  >
+                    My approach
+                  </Button>
+                </div>
+                <span className="font-mono text-xs text-muted-foreground">
+                  {tab === 'overview' ? '01.1 / BIO' : '01.2 / PROCESS'}
+                </span>
               </div>
+
               {tab === 'overview' ? (
-                <motion.div key="overview" initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} className="max-w-2xl space-y-4">
-                  <p className="text-lg leading-relaxed text-foreground">From architecting APIs and database schemas to shaping responsive interfaces, I work across the full product stack.</p>
-                  <p className="leading-relaxed text-muted-foreground">I value clear communication, practical problem solving, and code that is easy for a team to build on. My recent work spans a freelancer marketplace, company tools, and internal dashboards.</p>
+                <motion.div key="overview" initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} className="space-y-4">
+                  <p className="border-l-2 border-primary pl-4 font-display text-2xl leading-snug text-foreground sm:text-[1.7rem]">
+                    From architecting APIs and database schemas to shaping responsive interfaces, I work across the full product stack.
+                  </p>
+                  <p className="text-base leading-relaxed text-muted-foreground">
+                    I value clear communication, practical problem solving, and code that is easy for a team to build on. My recent work spans a freelancer marketplace, company tools, and internal dashboards.
+                  </p>
                 </motion.div>
               ) : (
-                <motion.div key="approach" initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} className="max-w-2xl space-y-4">
-                  <p className="text-lg leading-relaxed text-foreground">Start with the real problem, make the important path feel simple, then build the foundation to support it.</p>
-                  <p className="leading-relaxed text-muted-foreground">That means reusable UI, well-tested APIs, and steady iteration with the people who will use and maintain the product.</p>
+                <motion.div key="approach" initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} className="space-y-4">
+                  <p className="border-l-2 border-accent pl-4 font-display text-2xl leading-snug text-foreground sm:text-[1.7rem]">
+                    Start with the real problem, make the important path feel simple, then build the foundation to support it.
+                  </p>
+                  <p className="text-base leading-relaxed text-muted-foreground">
+                    That means reusable UI, well-tested APIs, and steady iteration with the people who will use and maintain the product.
+                  </p>
                 </motion.div>
               )}
             </div>
-            <div>
-              <div className="grid grid-cols-3 border-y border-border py-4">
-                {[
-                  { value: '15+', label: 'responsive screens' },
-                  { value: '8+', label: 'REST APIs' },
-                  { value: '6+', label: 'product modules' },
-                ].map((stat) => (
-                  <div key={stat.label} className="pr-2">
-                    <p className="font-display text-3xl text-primary sm:text-4xl">{stat.value}</p>
-                    <p className="mt-1 text-xs leading-snug text-muted-foreground sm:text-sm">{stat.label}</p>
-                  </div>
-                ))}
+
+            <div className="space-y-5">
+
+              <div className="flex flex-wrap items-center gap-3">
+                <Button asChild size="lg">
+                  <a href="/Uday_Shakya_full_Stack_developer.pdf" download="Uday_Shakya_full_Stack_developer.pdf">
+                    <Download aria-hidden="true" /> Download résumé
+                  </a>
+                </Button>
+                <Button asChild variant="outline" size="lg">
+                  <a href="#projects">
+                    View projects <ArrowUpRight aria-hidden="true" />
+                  </a>
+                </Button>
               </div>
-              <Button asChild className="mt-5">
-                <a href="/Uday_Shakya_full_Stack_developer.pdf" download="Uday_Shakya_full_Stack_developer.pdf">
-                  <Download aria-hidden="true" /> Download résumé
-                </a>
-              </Button>
             </div>
           </div>
 
-          <aside className="mt-10 border-y border-border bg-secondary/45 p-5 sm:p-7 lg:mt-0 lg:border-y-0 lg:border-l lg:pl-9">
-            <div className="mb-6 flex items-center justify-between gap-4 border-b border-border pb-3">
-              <p className="font-mono text-xs text-muted-foreground">PROFILE / 01</p>
-              <span className="inline-flex items-center gap-2 font-mono text-xs text-primary"><span className="h-2 w-2 rounded-full bg-primary" />Open to opportunities</span>
+          <aside className="flex flex-col justify-between border border-border bg-secondary/45 p-5 sm:p-7 lg:border-y-0 lg:border-r-0 lg:border-l lg:pl-9">
+            <div>
+              <div className="mb-6 flex items-center justify-between gap-4 border-b border-border pb-3">
+                <p className="font-mono text-xs text-muted-foreground">PROFILE / 01</p>
+                <span className="inline-flex items-center gap-2 font-mono text-xs text-primary"><span className="h-2 w-2 rounded-full bg-primary" />Open to opportunities</span>
+              </div>
+              <dl className="divide-y divide-border">
+                {[
+                  { label: 'Name', value: 'Uday Shakya' },
+                  { label: 'Role', value: 'Full-stack developer' },
+                  { label: 'Location', value: 'Gwalior, MP, India' },
+                  { label: 'Focus', value: 'Modern full-stack web apps' },
+                  { label: 'Core stack', value: 'React · Node.js · TypeScript · MongoDB' },
+                ].map((item) => (
+                  <div key={item.label} className="grid grid-cols-[5.5rem_1fr] gap-3 py-3.5">
+                    <dt className="font-mono text-xs text-muted-foreground">{item.label}</dt>
+                    <dd className="text-sm leading-relaxed text-foreground">{item.value}</dd>
+                  </div>
+                ))}
+              </dl>
             </div>
-            <dl className="divide-y divide-border">
-              {[
-                { label: 'Name', value: 'Uday Shakya' },
-                { label: 'Role', value: 'Full-stack developer' },
-                { label: 'Location', value: 'Gwalior, MP, India' },
-                { label: 'Focus', value: 'Modern full-stack web apps' },
-                { label: 'Core stack', value: 'React · Node.js · TypeScript · MongoDB' },
-              ].map((item) => (
-                <div key={item.label} className="grid grid-cols-[5.5rem_1fr] gap-3 py-3.5">
-                  <dt className="font-mono text-xs text-muted-foreground">{item.label}</dt>
-                  <dd className="text-sm leading-relaxed text-foreground">{item.value}</dd>
-                </div>
-              ))}
-            </dl>
-            <Button type="button" variant="outline" size="sm" onClick={copyEmail} className="mt-5">
-              <Copy aria-hidden="true" /> {copied ? 'Email copied' : 'Copy email'}
-            </Button>
-            <span className="sr-only" role="status">{copied ? `${EMAIL} copied to clipboard` : ''}</span>
+            <div className="mt-6">
+              <Button type="button" variant="outline" size="sm" onClick={copyEmail}>
+                <Copy aria-hidden="true" /> {copied ? 'Email copied' : 'Copy email'}
+              </Button>
+              <span className="sr-only" role="status">{copied ? `${EMAIL} copied to clipboard` : ''}</span>
+            </div>
           </aside>
         </div>
 

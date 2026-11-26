@@ -9,7 +9,6 @@ export const Hero = () => (
         initial={{ opacity: 0, y: 18 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.65, ease: 'easeOut' }}
-        className="order-2 lg:order-1"
       >
         <div className="inline-flex items-center gap-2 border border-border bg-card px-3 py-2 font-mono text-xs text-muted-foreground">
           <span className="h-2 w-2 rounded-full bg-primary" aria-hidden="true" />
@@ -36,21 +35,21 @@ export const Hero = () => (
         initial={{ opacity: 0, y: 18 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.75, delay: 0.1, ease: 'easeOut' }}
-        className="order-1 mx-auto w-full max-w-[16rem] lg:order-2 lg:max-w-[24rem] lg:justify-self-end"
+        className="mx-auto w-full max-w-[16rem] lg:max-w-[24rem] lg:justify-self-end"
       >
-        <div className="relative aspect-[4/4.65] overflow-hidden bg-secondary">
+        <div className="relative aspect-[4/4.65] overflow-hidden">
           <img
             src="/lovable-uploads/profile-new.png"
             alt="Uday Shakya, full-stack developer"
             className="h-full w-full object-cover object-center"
             fetchPriority="high"
           />
-          <div className="absolute bottom-0 left-0 right-0 flex items-end justify-between gap-4 border-t border-background/30 bg-foreground/85 px-4 py-3 text-background sm:px-5">
+          <div className="absolute bottom-0 left-0 right-0 flex items-end justify-between gap-4 border-t border-border bg-background/85 px-4 py-3 text-foreground backdrop-blur-sm sm:px-5">
             <div>
               <p className="font-display text-lg">Uday Shakya</p>
-              <p className="font-mono text-xs text-background/70">Full-stack developer</p>
+              <p className="font-mono text-xs text-muted-foreground">Full-stack developer</p>
             </div>
-            <span className="font-mono text-xs text-background/70">IND / 01</span>
+            <span className="font-mono text-xs text-muted-foreground">IND / 01</span>
           </div>
         </div>
         <figcaption className="mt-3 hidden justify-between gap-4 font-mono text-[11px] text-muted-foreground lg:flex">
